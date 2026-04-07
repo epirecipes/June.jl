@@ -1,0 +1,6 @@
+.DS_Store
+results/
+*.h5
+vignettes/.venv/
+vignettes/**/.DS_Store
+vignettes/**/.quarto/

@@ -1,0 +1,293 @@
+---
+title: "Groups, Interactions, and Policies in June.jl"
+engine: julia
+execute:
+  eval: true
+format:
+  html:
+    toc: true
+    code-fold: false
+  gfm:
+    toc: true
+  pdf:
+    toc: true
+    mainfont: "STIX Two Text"
+    mathfont: "STIX Two Math"
+    monofont: "Courier New"
+    pdf-engine: lualatex
+---
+
+# Groups, Interactions, and Policies
+
+June.jl organises people into **groups** — places where interactions (and disease transmission) occur. **Policies** modify these interactions (e.g., social distancing, school closures). This vignette demonstrates groups, the interaction model, and the policy system.
+
+## Setup
+
+```{julia}
+using June
+using Dates
+import June: StayHome, SocialDistancing, MaskWearing, Shielding
+```
+
+## Households
+
+Households are the most fundamental group. People assigned to a household reside there overnight.
+
+```{julia}
+p1 = Person(; sex='m', age=40)
+p2 = Person(; sex='f', age=38)
+p3 = Person(; sex='f', age=12)
+p4 = Person(; sex='m', age=8)
+
+h = Household()
+add!(h, p1)
+add!(h, p2)
+add!(h, p3)
+add!(h, p4)
+
+println("Household: $(n_residents(h)) residents")
+for p in people(h)
+    println("  Person id=$(p.id), sex=$(p.sex), age=$(p.age)")
+end
+```
+
+## Schools
+
+Schools have a sector (primary/secondary), age range, and maximum pupil capacity.
+
+```{julia}
+school = School((54.97, -1.61), 300, 5, 11, "primary")
+println("School: sector=$(school.sector), age_min=$(school.age_min), age_max=$(school.age_max)")
+println("  Max pupils: $(school.n_pupils_max)")
+
+# Add children
+child1 = Person(; sex='f', age=7)
+child2 = Person(; sex='m', age=9)
+child3 = Person(; sex='f', age=10)
+add!(school, child1)
+add!(school, child2)
+add!(school, child3)
+println("  Current pupils: $(length(people(school)))")
+println("  Is full: $(is_full(school))")
+```
+
+## Companies
+
+Companies are workplaces with a sector and maximum worker capacity.
+
+```{julia}
+c1 = Company(; sector="Q", n_workers_max=20)
+c2 = Company(; sector="G", n_workers_max=5)
+
+w1 = Person(; sex='m', age=30)
+w2 = Person(; sex='f', age=45)
+w3 = Person(; sex='m', age=55)
+add!(c1, w1)
+add!(c1, w2)
+add!(c2, w3)
+
+println("Company 1: sector=$(c1.sector), workers=$(length(people(c1)))/$(c1.n_workers_max)")
+println("Company 2: sector=$(c2.sector), workers=$(length(people(c2)))/$(c2.n_workers_max)")
+```
+
+## Hospitals
+
+Hospitals have workers, wards, and ICU beds, identified by a trust code.
+
+```{julia}
+hosp = Hospital(; trust_code="NT1")
+doc = Person(; sex='f', age=35)
+add!(hosp, doc)  # adds as a worker
+println("Hospital: trust_code=$(hosp.trust_code)")
+println("  Total people: $(length(people(hosp)))")
+```
+
+## Universities
+
+```{julia}
+uni = University(; n_students_max=5000, n_years=3, ukprn="10007154")
+student = Person(; sex='m', age=20)
+add!(uni, student)
+println("University: ukprn=$(uni.ukprn), people=$(length(people(uni)))/$(uni.n_students_max)")
+```
+
+## Care Homes
+
+```{julia}
+ch = CareHome()
+elderly = Person(; sex='f', age=85)
+add!(ch, elderly)
+println("Care home: $(length(people(ch))) residents")
+```
+
+## Group Summary
+
+```{julia}
+println("Group Type       | Example         | People")
+println("─────────────────|─────────────────|───────")
+println("Household        | Family home     | $(n_residents(h))")
+println("School           | Primary school  | $(length(people(school)))")
+println("Company          | Sector Q firm   | $(length(people(c1)))")
+println("Hospital         | NT1 trust       | $(length(people(hosp)))")
+println("University       | UKPRN 10007154  | $(length(people(uni)))")
+println("Care Home        | Local care home | $(length(people(ch)))")
+```
+
+## The Group Abstraction
+
+All concrete group types wrap a generic `Group` object with subgroups. People are assigned to subgroups for fine-grained contact modelling.
+
+```{julia}
+# Create a raw Group with 3 subgroups
+g = Group("test_venue", 3)
+pa = Person(; sex='m', age=25)
+pb = Person(; sex='f', age=30)
+add!(g, pa, 1)  # subgroup index 1 (1-based)
+add!(g, pb, 2)
+println("Generic Group: spec=$(g.spec), total people=$(length(people(g)))")
+println("  Subgroup 1: $(length(g.subgroups[1].people)) people")
+println("  Subgroup 2: $(length(g.subgroups[2].people)) people")
+println("  Subgroup 3: $(length(g.subgroups[3].people)) people")
+```
+
+## The Interaction Model
+
+The `Interaction` type controls how disease spreads within groups. It is parameterised by:
+
+- **`alpha_physical`**: Scaling factor for physical (vs. non-physical) contacts
+- **`betas`**: Per-group transmission intensities
+- **`contact_matrices`**: Contact patterns within subgroups of each group type
+
+```{julia}
+betas = Dict(
+    "household" => 0.208,
+    "school" => 0.070,
+    "company" => 0.371,
+    "pub" => 0.429,
+    "grocery" => 0.041,
+)
+contact_matrices = Dict(
+    "household" => [1.0 0.5; 0.5 1.0],
+    "school" => [1.0 0.3; 0.3 1.0],
+    "company" => ones(1, 1),
+    "pub" => ones(1, 1),
+    "grocery" => ones(1, 1),
+)
+interaction = Interaction(2.0, betas, contact_matrices, Dict{String, Float64}())
+println("Interaction model:")
+println("  alpha_physical: $(interaction.alpha_physical)")
+println("  Group betas:")
+for (g, b) in sort(collect(interaction.betas), by=x->x[2], rev=true)
+    bar = repeat("█", round(Int, b * 40))
+    println("    $(rpad(g, 12)) β=$(rpad(b, 6)) $bar")
+end
+```
+
+## Policies
+
+Policies modify behaviour during a simulation. They are organised into categories:
+
+- **Individual policies**: Keep people at home (e.g., `StayHome`, `Quarantine`, `Shielding`)
+- **Interaction policies**: Reduce transmission (e.g., `SocialDistancing`, `MaskWearing`)
+- **Leisure policies**: Close or limit leisure venues
+
+### Checking Policy Activation
+
+Every policy has a time window. The `is_active` function checks whether a policy applies at a given date.
+
+```{julia}
+start = DateTime("2020-03-23")
+finish = DateTime("2020-06-01")
+policy = Policy(start, finish)
+println("Policy active window: $(start) to $(finish)")
+println("  Active on 2020-04-01? $(is_active(policy, DateTime("2020-04-01")))")
+println("  Active on 2020-07-01? $(is_active(policy, DateTime("2020-07-01")))")
+println("  Active on 2020-03-01? $(is_active(policy, DateTime("2020-03-01")))")
+```
+
+### Social Distancing
+
+`SocialDistancing` reduces transmission by applying per-group beta scaling factors.
+
+```{julia}
+sd = SocialDistancing(
+    DateTime("2020-03-23"),
+    DateTime("2020-06-01"),
+    Dict("school" => 0.5, "company" => 0.7, "pub" => 0.0),
+)
+println("Social distancing policy:")
+println("  Active: $(sd.start_time) to $(sd.end_time)")
+println("  Beta reductions:")
+for (g, f) in sort(collect(sd.beta_factors))
+    pct = round((1.0 - f) * 100, digits=0)
+    println("    $(rpad(g, 12)) factor=$(f)  ($(pct)% reduction)")
+end
+```
+
+### Stay Home
+
+`StayHome` keeps a fraction of the population at home.
+
+```{julia}
+stay = StayHome(
+    DateTime("2020-03-23"),
+    DateTime("2020-06-01"),
+    0.85,
+)
+println("Stay-at-home policy:")
+println("  Active: $(stay.start_time) to $(stay.end_time)")
+println("  Compliance: $(stay.compliance * 100)%")
+```
+
+### Mask Wearing
+
+`MaskWearing` reduces transmission through face coverings.
+
+```{julia}
+masks = MaskWearing(
+    DateTime("2020-06-15"),
+    nothing,   # no end date — indefinite
+    0.8,       # probability of wearing a mask
+    0.9,       # compliance
+    0.5,       # beta reduction factor when both wear masks
+)
+println("Mask wearing policy:")
+println("  Start: $(masks.start_time)")
+println("  End: $(isnothing(masks.end_time) ? "indefinite" : string(masks.end_time))")
+println("  Mask probability: $(masks.mask_probability * 100)%")
+println("  Compliance: $(masks.compliance * 100)%")
+println("  Beta factor: $(masks.beta_factor)")
+```
+
+### Shielding
+
+`Shielding` keeps vulnerable (elderly) people at home.
+
+```{julia}
+shield = Shielding(
+    DateTime("2020-03-23"),
+    DateTime("2020-08-01"),
+    70,     # minimum age
+    0.85,   # compliance
+)
+println("Shielding policy:")
+println("  Active: $(shield.start_time) to $(shield.end_time)")
+println("  Min age: $(shield.min_age)")
+println("  Compliance: $(shield.compliance * 100)%")
+```
+
+## Policy Summary
+
+```{julia}
+println("Policy Summary")
+println("══════════════════════════════════════════════════════════════════")
+println("Category     | Policy            | Key Parameter")
+println("─────────────|───────────────────|──────────────────────────────")
+println("Individual   | StayHome          | compliance=$(stay.compliance)")
+println("Individual   | Shielding         | min_age=$(shield.min_age), compliance=$(shield.compliance)")
+println("Interaction  | SocialDistancing  | school β×$(sd.beta_factors["school"])")
+println("Interaction  | MaskWearing       | β×$(masks.beta_factor), prob=$(masks.mask_probability)")
+println("─────────────|───────────────────|──────────────────────────────")
+println()
+println("Policies can be loaded from YAML config files using policies_from_file().")
+```

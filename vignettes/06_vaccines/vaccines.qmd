@@ -1,0 +1,144 @@
+---
+title: "Immunity and Vaccination in June.jl"
+engine: julia
+execute:
+  eval: true
+format:
+  html:
+    toc: true
+    code-fold: false
+  gfm:
+    toc: true
+  pdf:
+    toc: true
+    mainfont: "STIX Two Text"
+    mathfont: "STIX Two Math"
+    monofont: "Courier New"
+    pdf-engine: lualatex
+---
+
+# Immunity and Vaccination
+
+June.jl models immunity through two mechanisms:
+
+- **Susceptibility**: Probability of becoming infected upon exposure (reduced by vaccination)
+- **Effective multiplier**: Modifies disease severity if infected (reduced by vaccination)
+
+## The Immunity Object
+
+Every `Person` has an `Immunity` object. By default, everyone is fully susceptible.
+
+```{julia}
+using June
+
+imm = Immunity()
+println("Default state:")
+println("  Susceptibility to infection 0: $(get_susceptibility(imm, 0))")
+println("  Effective multiplier for infection 0: $(get_effective_multiplier(imm, 0))")
+```
+
+## Vaccination: Dose 1
+
+After dose 1, sterilisation efficacy of 52% reduces susceptibility.
+
+```{julia}
+p = Person(; sex='m', age=70)
+p.immunity = Immunity()
+println("Before vaccination:")
+println("  Susceptibility = $(get_susceptibility(p.immunity, 0))")
+
+# Dose 1: 52% sterilisation efficacy
+dose1_sterilisation = 0.52
+p.immunity.susceptibility_dict[0] = 1.0 - dose1_sterilisation
+println()
+println("After dose 1 (sterilisation efficacy = $(dose1_sterilisation)):")
+println("  Susceptibility = $(get_susceptibility(p.immunity, 0))")
+```
+
+## Vaccination: Dose 2
+
+Dose 2 boosts protection with 95% sterilisation efficacy.
+
+```{julia}
+dose2_sterilisation = 0.95
+p.immunity.susceptibility_dict[0] = 1.0 - dose2_sterilisation
+println("After dose 2 (sterilisation efficacy = $(dose2_sterilisation)):")
+println("  Susceptibility = $(get_susceptibility(p.immunity, 0))")
+```
+
+## Symptomatic Efficacy
+
+Vaccination also reduces disease severity through the effective multiplier.
+
+```{julia}
+println("Before vaccination:")
+println("  Effective multiplier = $(get_effective_multiplier(p.immunity, 0))")
+
+# Dose 1: 60% symptomatic efficacy
+dose1_symptomatic = 0.60
+p.immunity.effective_multiplier_dict[0] = 1.0 - dose1_symptomatic
+println()
+println("After dose 1 (symptomatic efficacy = $(dose1_symptomatic)):")
+println("  Effective multiplier = $(get_effective_multiplier(p.immunity, 0))")
+
+# Dose 2: 90% symptomatic efficacy
+dose2_symptomatic = 0.90
+p.immunity.effective_multiplier_dict[0] = 1.0 - dose2_symptomatic
+println()
+println("After dose 2 (symptomatic efficacy = $(dose2_symptomatic)):")
+println("  Effective multiplier = $(get_effective_multiplier(p.immunity, 0))")
+```
+
+## Dose Object
+
+The `Dose` type models time-varying efficacy with three phases: building, effective, and waning.
+
+```{julia}
+dose = Dose(;
+    sterilisation_efficacy=Dict(0 => 0.52),
+    symptomatic_efficacy=Dict(0 => 0.60),
+    days_administered_to_effective=14.0,
+    days_effective_to_waning=180.0,
+    days_waning=90.0,
+    waning_factor=0.5,
+)
+println("Dose configuration:")
+println("  Sterilisation efficacy (infection 0): $(dose.sterilisation_efficacy[0])")
+println("  Symptomatic efficacy (infection 0): $(dose.symptomatic_efficacy[0])")
+println("  Days to effective: $(dose.days_administered_to_effective)")
+println("  Days effective: $(dose.days_effective_to_waning)")
+println("  Days waning: $(dose.days_waning)")
+println("  Waning factor: $(dose.waning_factor)")
+```
+
+## Multi-Pathogen Immunity
+
+Immunity is tracked per infection ID, allowing multi-pathogen scenarios.
+
+```{julia}
+imm2 = Immunity()
+println("Two-pathogen scenario:")
+println("  Infection 0 susceptibility: $(get_susceptibility(imm2, 0))")
+println("  Infection 1 susceptibility: $(get_susceptibility(imm2, 1))")
+
+# Vaccinate against pathogen 0 only
+imm2.susceptibility_dict[0] = 0.05
+println()
+println("After vaccination against pathogen 0:")
+println("  Infection 0 susceptibility: $(get_susceptibility(imm2, 0))")
+println("  Infection 1 susceptibility: $(get_susceptibility(imm2, 1))  (unchanged)")
+```
+
+## Vaccination Summary Table
+
+```{julia}
+println("Vaccination Impact Summary")
+println("══════════════════════════════════════════════════════════")
+println("Dose | Sterilisation | Susceptibility | Symptomatic | Eff. Mult.")
+println("─────|───────────────|────────────────|─────────────|──────────")
+for (d, se, sye) in [(0, 0.0, 0.0), (1, 0.52, 0.60), (2, 0.95, 0.90)]
+    susc = round(1.0 - se, digits=2)
+    em = round(1.0 - sye, digits=2)
+    println("  $(d)  |     $(rpad(se, 9))  |      $(rpad(susc, 9)) |    $(rpad(sye, 7))  |   $(em)")
+end
+```

@@ -1,0 +1,142 @@
+---
+title: "Epidemiology in June.jl"
+engine: julia
+execute:
+  eval: true
+format:
+  html:
+    toc: true
+    code-fold: false
+  gfm:
+    toc: true
+  pdf:
+    toc: true
+    mainfont: "STIX Two Text"
+    mathfont: "STIX Two Math"
+    monofont: "Courier New"
+    pdf-engine: lualatex
+---
+
+# Disease Modelling
+
+June.jl models disease transmission using configurable parameters for:
+
+- **Transmission**: How infectiousness varies over time (Gamma, XNExp, or Constant profiles)
+- **Symptoms**: Disease progression through stages (exposed → mild → severe → hospitalised → ICU → recovery/death)
+- **Infection**: Combines transmission and symptoms into a single object
+- **Immunity**: Tracks susceptibility changes from natural infection or vaccination
+
+## Transmission Profiles
+
+The `TransmissionGamma` profile models how the probability of transmission varies over time since infection, using a Gamma distribution.
+
+```{julia}
+using June
+
+tg = TransmissionGamma(0.3, 1.56, 0.53, -2.12)
+println("Parameters: max_infectiousness=0.3, shape=1.56, rate=0.53, shift=-2.12")
+println()
+
+# Tabulate the transmission curve
+println("Day  | Probability | Profile")
+println("─────|─────────────|────────────────────────────────────────")
+for day in 0:20
+    update_infection_probability!(tg, Float64(day))
+    bar_len = round(Int, tg.probability * 200)
+    bar = repeat("█", bar_len)
+    println(lpad(day, 4), " | ", rpad(round(tg.probability, digits=6), 11), " | ", bar)
+end
+```
+
+## Peak Infectiousness
+
+```{julia}
+# Find the peak by scanning at fine resolution
+peak_time = 0.0
+peak_prob = 0.0
+for t in 0.0:0.01:20.0
+    update_infection_probability!(tg, t)
+    if tg.probability > peak_prob
+        peak_prob = tg.probability
+        peak_time = t
+    end
+end
+println("Peak infectiousness: $(round(peak_prob, digits=6)) at day $(round(peak_time, digits=2))")
+```
+
+## Symptom Tags
+
+The disease progression follows a trajectory through symptom stages, represented by the `SymptomTag` enum.
+
+```{julia}
+println("Symptom stages (severity order):")
+println("─" ^ 35)
+for tag in instances(SymptomTag)
+    println("  $(rpad(tag, 18)) = $(symptom_value(tag))")
+end
+```
+
+## Symptoms and Health Index
+
+A `Symptoms` object is initialized with a `health_index` vector — cumulative probabilities that determine the maximum severity a person can reach.
+
+```{julia}
+# health_index: cumulative probabilities for [asymptomatic, mild, severe, hospitalised, ICU, dead]
+health_index = [0.2, 0.5, 0.7, 0.85, 0.95, 1.0]
+sym = Symptoms(health_index)
+println("Initial symptom tag: $(sym.tag)")
+println("Maximum severity tag: $(sym.max_tag)")
+println("Max severity value: $(sym.max_severity)")
+```
+
+```{julia}
+# Different health indices model different risk profiles
+young_healthy = [0.6, 0.9, 0.97, 0.99, 0.999, 1.0]
+elderly_comorbid = [0.05, 0.15, 0.35, 0.55, 0.75, 1.0]
+
+sym_young = Symptoms(young_healthy)
+sym_old = Symptoms(elderly_comorbid)
+println("Young healthy max severity: $(sym_young.max_tag)")
+println("Elderly with comorbidity max severity: $(sym_old.max_tag)")
+```
+
+## Creating an Infection
+
+An `Infection` combines a transmission profile with symptoms and a start time.
+
+```{julia}
+tg2 = TransmissionGamma(0.3, 1.56, 0.53, -2.12)
+sym2 = Symptoms([0.2, 0.5, 0.7, 0.85, 0.95, 1.0])
+inf = Infection(tg2, sym2, 0.0)
+println("Infection created at time 0.0")
+println("  Transmission type: $(typeof(inf.transmission))")
+println("  Current symptom tag: $(inf.symptoms.tag)")
+println("  Infection probability: $(inf.transmission.probability)")
+```
+
+## Immunity and Susceptibility
+
+The `Immunity` type tracks a person's susceptibility to each pathogen (indexed by infection ID).
+
+```{julia}
+imm = Immunity()
+println("Default susceptibility to infection 0: $(get_susceptibility(imm, 0))")
+println("Default susceptibility to infection 1: $(get_susceptibility(imm, 1))")
+
+# Simulate vaccination reducing susceptibility
+imm.susceptibility_dict[0] = 0.48
+println()
+println("After vaccination (sterilisation efficacy 52%):")
+println("  Susceptibility to infection 0: $(get_susceptibility(imm, 0))")
+println("  Susceptibility to infection 1: $(get_susceptibility(imm, 1))  (unchanged)")
+```
+
+## Effective Multiplier
+
+The effective multiplier modifies how severely an infection manifests (e.g., after vaccination).
+
+```{julia}
+println("Default effective multiplier: $(get_effective_multiplier(imm, 0))")
+imm.effective_multiplier_dict[0] = 0.3
+println("After vaccination: $(get_effective_multiplier(imm, 0))")
+```

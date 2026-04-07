@@ -1,0 +1,18 @@
+project:
+  type: default
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: false
+  gfm:
+    toc: true
+  pdf:
+    toc: true
+    documentclass: article
+    mainfont: "STIX Two Text"
+    mathfont: "STIX Two Math"
+    monofont: "Courier New"
+    pdf-engine: lualatex
+    colorlinks: true
