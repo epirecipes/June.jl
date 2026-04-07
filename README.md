@@ -1,7 +1,7 @@
 # June.jl
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Docs: dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://epirecip.es/June.jl/dev)
+[![Docs: dev](https://img.shields.io/badge/docs-dev-blue.svg)](http://epirecip.es/June.jl/dev)
 
 A Julia port of [JUNE](https://github.com/IDAS-Durham/JUNE), the open-source individual-based epidemiology simulation framework named after virologist [June Almeida](https://en.wikipedia.org/wiki/June_Almeida).
 

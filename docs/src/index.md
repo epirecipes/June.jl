@@ -16,4 +16,4 @@ Start with the [vignette overview](generated/vignettes/index.md), then work thro
 ## Repository
 
 - GitHub: <https://github.com/epirecipes/June.jl>
-- Development docs: <https://epirecip.es/June.jl/dev>
+- Development docs: <http://epirecip.es/June.jl/dev>
