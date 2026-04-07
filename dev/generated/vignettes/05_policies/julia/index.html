@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia · June.jl</title><meta name="title" content="Julia · June.jl"/><meta property="og:title" content="Julia · June.jl"/><meta property="twitter:title" content="Julia · June.jl"/><meta name="description" content="Documentation for June.jl."/><meta property="og:description" content="Documentation for June.jl."/><meta property="twitter:description" content="Documentation for June.jl."/><script data-outdated-warner src="../../../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../../../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../../../assets/documenter.js"></script><script src="../../../../search_index.js"></script><script src="../../../../siteinfo.js"></script><script src="../../../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../../../">June.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../../../">Home</a></li><li><span class="tocitem">Vignettes</span><ul><li><a class="tocitem" href="../../">Overview</a></li><li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox"/><label class="tocitem" for="menuitem-2-2"><span class="docs-label">01 Quickstart</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../01_quickstart/julia/">Julia</a></li><li><a class="tocitem" href="../../01_quickstart/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox"/><label class="tocitem" for="menuitem-2-3"><span class="docs-label">02 Geography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../02_geography/julia/">Julia</a></li><li><a class="tocitem" href="../../02_geography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox"/><label class="tocitem" for="menuitem-2-4"><span class="docs-label">03 Demography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../03_demography/julia/">Julia</a></li><li><a class="tocitem" href="../../03_demography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox"/><label class="tocitem" for="menuitem-2-5"><span class="docs-label">04 Epidemiology</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../04_epidemiology/julia/">Julia</a></li><li><a class="tocitem" href="../../04_epidemiology/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" checked/><label class="tocitem" for="menuitem-2-6"><span class="docs-label">05 Policies</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href>Julia</a><ul class="internal"><li class="toplevel"><a class="tocitem" href="#Groups,-Interactions,-and-Policies"><span>Groups, Interactions, and Policies</span></a></li><li><a class="tocitem" href="#Setup"><span>Setup</span></a></li><li><a class="tocitem" href="#Households"><span>Households</span></a></li><li><a class="tocitem" href="#Schools"><span>Schools</span></a></li><li><a class="tocitem" href="#Companies"><span>Companies</span></a></li><li><a class="tocitem" href="#Hospitals"><span>Hospitals</span></a></li><li><a class="tocitem" href="#Universities"><span>Universities</span></a></li><li><a class="tocitem" href="#Care-Homes"><span>Care Homes</span></a></li><li><a class="tocitem" href="#Group-Summary"><span>Group Summary</span></a></li><li><a class="tocitem" href="#The-Group-Abstraction"><span>The Group Abstraction</span></a></li><li><a class="tocitem" href="#The-Interaction-Model"><span>The Interaction Model</span></a></li><li><a class="tocitem" href="#Policies"><span>Policies</span></a></li><li><a class="tocitem" href="#Policy-Summary"><span>Policy Summary</span></a></li></ul></li><li><a class="tocitem" href="../python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox"/><label class="tocitem" for="menuitem-2-7"><span class="docs-label">06 Vaccines</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../06_vaccines/julia/">Julia</a></li><li><a class="tocitem" href="../../06_vaccines/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox"/><label class="tocitem" for="menuitem-2-8"><span class="docs-label">07 Advanced</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../07_advanced/julia/">Julia</a></li><li><a class="tocitem" href="../../07_advanced/python/">Python</a></li></ul></li></ul></li><li><a class="tocitem" href="../../../../api/">API Reference</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Vignettes</a></li><li><a class="is-disabled">05 Policies</a></li><li class="is-active"><a href>Julia</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Julia</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/epirecipes/June.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Groups,-Interactions,-and-Policies-in-June.jl"><a class="docs-heading-anchor" href="#Groups,-Interactions,-and-Policies-in-June.jl">Groups, Interactions, and Policies in June.jl</a><a id="Groups,-Interactions,-and-Policies-in-June.jl-1"></a><a class="docs-heading-anchor-permalink" href="#Groups,-Interactions,-and-Policies-in-June.jl" title="Permalink"></a></h1><ul><li><a href="#groups-interactions-and-policies">Groups, Interactions, and Policies</a><ul><li><a href="#setup">Setup</a></li><li><a href="#households">Households</a></li><li><a href="#schools">Schools</a></li><li><a href="#companies">Companies</a></li><li><a href="#hospitals">Hospitals</a></li><li><a href="#universities">Universities</a></li><li><a href="#care-homes">Care Homes</a></li><li><a href="#group-summary">Group Summary</a></li><li><a href="#the-group-abstraction">The Group Abstraction</a></li><li><a href="#the-interaction-model">The Interaction Model</a></li><li><a href="#policies">Policies</a><ul><li><a href="#checking-policy-activation">Checking Policy Activation</a></li><li><a href="#social-distancing">Social Distancing</a></li><li><a href="#stay-home">Stay Home</a></li><li><a href="#mask-wearing">Mask Wearing</a></li><li><a href="#shielding">Shielding</a></li></ul></li><li><a href="#policy-summary">Policy Summary</a></li></ul></li></ul><h1 id="Groups,-Interactions,-and-Policies"><a class="docs-heading-anchor" href="#Groups,-Interactions,-and-Policies">Groups, Interactions, and Policies</a><a id="Groups,-Interactions,-and-Policies-1"></a><a class="docs-heading-anchor-permalink" href="#Groups,-Interactions,-and-Policies" title="Permalink"></a></h1><p>June.jl organises people into <strong>groups</strong> — places where interactions (and disease transmission) occur. <strong>Policies</strong> modify these interactions (e.g., social distancing, school closures). This vignette demonstrates groups, the interaction model, and the policy system.</p><h2 id="Setup"><a class="docs-heading-anchor" href="#Setup">Setup</a><a id="Setup-1"></a><a class="docs-heading-anchor-permalink" href="#Setup" title="Permalink"></a></h2><pre><code class="language-julia hljs">using June
+using Dates
+import June: StayHome, SocialDistancing, MaskWearing, Shielding</code></pre><h2 id="Households"><a class="docs-heading-anchor" href="#Households">Households</a><a id="Households-1"></a><a class="docs-heading-anchor-permalink" href="#Households" title="Permalink"></a></h2><p>Households are the most fundamental group. People assigned to a household reside there overnight.</p><pre><code class="language-julia hljs">p1 = Person(; sex=&#39;m&#39;, age=40)
+p2 = Person(; sex=&#39;f&#39;, age=38)
+p3 = Person(; sex=&#39;f&#39;, age=12)
+p4 = Person(; sex=&#39;m&#39;, age=8)
+
+h = Household()
+add!(h, p1)
+add!(h, p2)
+add!(h, p3)
+add!(h, p4)
+
+println(&quot;Household: $(n_residents(h)) residents&quot;)
+for p in people(h)
+    println(&quot;  Person id=$(p.id), sex=$(p.sex), age=$(p.age)&quot;)
+end</code></pre><pre><code class="nohighlight hljs">Household: 4 residents
+  Person id=3, sex=f, age=12
+  Person id=4, sex=m, age=8
+  Person id=1, sex=m, age=40
+  Person id=2, sex=f, age=38</code></pre><h2 id="Schools"><a class="docs-heading-anchor" href="#Schools">Schools</a><a id="Schools-1"></a><a class="docs-heading-anchor-permalink" href="#Schools" title="Permalink"></a></h2><p>Schools have a sector (primary/secondary), age range, and maximum pupil capacity.</p><pre><code class="language-julia hljs">school = School((54.97, -1.61), 300, 5, 11, &quot;primary&quot;)
+println(&quot;School: sector=$(school.sector), age_min=$(school.age_min), age_max=$(school.age_max)&quot;)
+println(&quot;  Max pupils: $(school.n_pupils_max)&quot;)
+
+# Add children
+child1 = Person(; sex=&#39;f&#39;, age=7)
+child2 = Person(; sex=&#39;m&#39;, age=9)
+child3 = Person(; sex=&#39;f&#39;, age=10)
+add!(school, child1)
+add!(school, child2)
+add!(school, child3)
+println(&quot;  Current pupils: $(length(people(school)))&quot;)
+println(&quot;  Is full: $(is_full(school))&quot;)</code></pre><pre><code class="nohighlight hljs">School: sector=primary, age_min=5, age_max=11
+  Max pupils: 300
+  Current pupils: 3
+  Is full: false</code></pre><h2 id="Companies"><a class="docs-heading-anchor" href="#Companies">Companies</a><a id="Companies-1"></a><a class="docs-heading-anchor-permalink" href="#Companies" title="Permalink"></a></h2><p>Companies are workplaces with a sector and maximum worker capacity.</p><pre><code class="language-julia hljs">c1 = Company(; sector=&quot;Q&quot;, n_workers_max=20)
+c2 = Company(; sector=&quot;G&quot;, n_workers_max=5)
+
+w1 = Person(; sex=&#39;m&#39;, age=30)
+w2 = Person(; sex=&#39;f&#39;, age=45)
+w3 = Person(; sex=&#39;m&#39;, age=55)
+add!(c1, w1)
+add!(c1, w2)
+add!(c2, w3)
+
+println(&quot;Company 1: sector=$(c1.sector), workers=$(length(people(c1)))/$(c1.n_workers_max)&quot;)
+println(&quot;Company 2: sector=$(c2.sector), workers=$(length(people(c2)))/$(c2.n_workers_max)&quot;)</code></pre><pre><code class="nohighlight hljs">Company 1: sector=Q, workers=2/20
+Company 2: sector=G, workers=1/5</code></pre><h2 id="Hospitals"><a class="docs-heading-anchor" href="#Hospitals">Hospitals</a><a id="Hospitals-1"></a><a class="docs-heading-anchor-permalink" href="#Hospitals" title="Permalink"></a></h2><p>Hospitals have workers, wards, and ICU beds, identified by a trust code.</p><pre><code class="language-julia hljs">hosp = Hospital(; trust_code=&quot;NT1&quot;)
+doc = Person(; sex=&#39;f&#39;, age=35)
+add!(hosp, doc)  # adds as a worker
+println(&quot;Hospital: trust_code=$(hosp.trust_code)&quot;)
+println(&quot;  Total people: $(length(people(hosp)))&quot;)</code></pre><pre><code class="nohighlight hljs">Hospital: trust_code=NT1
+  Total people: 1</code></pre><h2 id="Universities"><a class="docs-heading-anchor" href="#Universities">Universities</a><a id="Universities-1"></a><a class="docs-heading-anchor-permalink" href="#Universities" title="Permalink"></a></h2><pre><code class="language-julia hljs">uni = University(; n_students_max=5000, n_years=3, ukprn=&quot;10007154&quot;)
+student = Person(; sex=&#39;m&#39;, age=20)
+add!(uni, student)
+println(&quot;University: ukprn=$(uni.ukprn), people=$(length(people(uni)))/$(uni.n_students_max)&quot;)</code></pre><pre><code class="nohighlight hljs">University: ukprn=10007154, people=1/5000</code></pre><h2 id="Care-Homes"><a class="docs-heading-anchor" href="#Care-Homes">Care Homes</a><a id="Care-Homes-1"></a><a class="docs-heading-anchor-permalink" href="#Care-Homes" title="Permalink"></a></h2><pre><code class="language-julia hljs">ch = CareHome()
+elderly = Person(; sex=&#39;f&#39;, age=85)
+add!(ch, elderly)
+println(&quot;Care home: $(length(people(ch))) residents&quot;)</code></pre><pre><code class="nohighlight hljs">Care home: 1 residents</code></pre><h2 id="Group-Summary"><a class="docs-heading-anchor" href="#Group-Summary">Group Summary</a><a id="Group-Summary-1"></a><a class="docs-heading-anchor-permalink" href="#Group-Summary" title="Permalink"></a></h2><pre><code class="language-julia hljs">println(&quot;Group Type       | Example         | People&quot;)
+println(&quot;─────────────────|─────────────────|───────&quot;)
+println(&quot;Household        | Family home     | $(n_residents(h))&quot;)
+println(&quot;School           | Primary school  | $(length(people(school)))&quot;)
+println(&quot;Company          | Sector Q firm   | $(length(people(c1)))&quot;)
+println(&quot;Hospital         | NT1 trust       | $(length(people(hosp)))&quot;)
+println(&quot;University       | UKPRN 10007154  | $(length(people(uni)))&quot;)
+println(&quot;Care Home        | Local care home | $(length(people(ch)))&quot;)</code></pre><pre><code class="nohighlight hljs">Group Type       | Example         | People
+─────────────────|─────────────────|───────
+Household        | Family home     | 4
+School           | Primary school  | 3
+Company          | Sector Q firm   | 2
+Hospital         | NT1 trust       | 1
+University       | UKPRN 10007154  | 1
+Care Home        | Local care home | 1</code></pre><h2 id="The-Group-Abstraction"><a class="docs-heading-anchor" href="#The-Group-Abstraction">The Group Abstraction</a><a id="The-Group-Abstraction-1"></a><a class="docs-heading-anchor-permalink" href="#The-Group-Abstraction" title="Permalink"></a></h2><p>All concrete group types wrap a generic <code>Group</code> object with subgroups. People are assigned to subgroups for fine-grained contact modelling.</p><pre><code class="language-julia hljs"># Create a raw Group with 3 subgroups
+g = Group(&quot;test_venue&quot;, 3)
+pa = Person(; sex=&#39;m&#39;, age=25)
+pb = Person(; sex=&#39;f&#39;, age=30)
+add!(g, pa, 1)  # subgroup index 1 (1-based)
+add!(g, pb, 2)
+println(&quot;Generic Group: spec=$(g.spec), total people=$(length(people(g)))&quot;)
+println(&quot;  Subgroup 1: $(length(g.subgroups[1].people)) people&quot;)
+println(&quot;  Subgroup 2: $(length(g.subgroups[2].people)) people&quot;)
+println(&quot;  Subgroup 3: $(length(g.subgroups[3].people)) people&quot;)</code></pre><pre><code class="nohighlight hljs">Generic Group: spec=test_venue, total people=2
+  Subgroup 1: 1 people
+  Subgroup 2: 1 people
+  Subgroup 3: 0 people</code></pre><h2 id="The-Interaction-Model"><a class="docs-heading-anchor" href="#The-Interaction-Model">The Interaction Model</a><a id="The-Interaction-Model-1"></a><a class="docs-heading-anchor-permalink" href="#The-Interaction-Model" title="Permalink"></a></h2><p>The <code>Interaction</code> type controls how disease spreads within groups. It is parameterised by:</p><ul><li><strong><code>alpha_physical</code></strong>: Scaling factor for physical (vs. non-physical) contacts</li><li><strong><code>betas</code></strong>: Per-group transmission intensities</li><li><strong><code>contact_matrices</code></strong>: Contact patterns within subgroups of each group type</li></ul><pre><code class="language-julia hljs">betas = Dict(
+    &quot;household&quot; =&gt; 0.208,
+    &quot;school&quot; =&gt; 0.070,
+    &quot;company&quot; =&gt; 0.371,
+    &quot;pub&quot; =&gt; 0.429,
+    &quot;grocery&quot; =&gt; 0.041,
+)
+contact_matrices = Dict(
+    &quot;household&quot; =&gt; [1.0 0.5; 0.5 1.0],
+    &quot;school&quot; =&gt; [1.0 0.3; 0.3 1.0],
+    &quot;company&quot; =&gt; ones(1, 1),
+    &quot;pub&quot; =&gt; ones(1, 1),
+    &quot;grocery&quot; =&gt; ones(1, 1),
+)
+interaction = Interaction(2.0, betas, contact_matrices, Dict{String, Float64}())
+println(&quot;Interaction model:&quot;)
+println(&quot;  alpha_physical: $(interaction.alpha_physical)&quot;)
+println(&quot;  Group betas:&quot;)
+for (g, b) in sort(collect(interaction.betas), by=x-&gt;x[2], rev=true)
+    bar = repeat(&quot;█&quot;, round(Int, b * 40))
+    println(&quot;    $(rpad(g, 12)) β=$(rpad(b, 6)) $bar&quot;)
+end</code></pre><pre><code class="nohighlight hljs">Interaction model:
+  alpha_physical: 2.0
+  Group betas:
+    pub          β=0.429  █████████████████
+    company      β=0.371  ███████████████
+    household    β=0.208  ████████
+    school       β=0.07   ███
+    grocery      β=0.041  ██</code></pre><h2 id="Policies"><a class="docs-heading-anchor" href="#Policies">Policies</a><a id="Policies-1"></a><a class="docs-heading-anchor-permalink" href="#Policies" title="Permalink"></a></h2><p>Policies modify behaviour during a simulation. They are organised into categories:</p><ul><li><strong>Individual policies</strong>: Keep people at home (e.g., <code>StayHome</code>, <code>Quarantine</code>, <code>Shielding</code>)</li><li><strong>Interaction policies</strong>: Reduce transmission (e.g., <code>SocialDistancing</code>, <code>MaskWearing</code>)</li><li><strong>Leisure policies</strong>: Close or limit leisure venues</li></ul><h3 id="Checking-Policy-Activation"><a class="docs-heading-anchor" href="#Checking-Policy-Activation">Checking Policy Activation</a><a id="Checking-Policy-Activation-1"></a><a class="docs-heading-anchor-permalink" href="#Checking-Policy-Activation" title="Permalink"></a></h3><p>Every policy has a time window. The <code>is_active</code> function checks whether a policy applies at a given date.</p><pre><code class="language-julia hljs">start = DateTime(&quot;2020-03-23&quot;)
+finish = DateTime(&quot;2020-06-01&quot;)
+policy = Policy(start, finish)
+println(&quot;Policy active window: $(start) to $(finish)&quot;)
+println(&quot;  Active on 2020-04-01? $(is_active(policy, DateTime(&quot;2020-04-01&quot;)))&quot;)
+println(&quot;  Active on 2020-07-01? $(is_active(policy, DateTime(&quot;2020-07-01&quot;)))&quot;)
+println(&quot;  Active on 2020-03-01? $(is_active(policy, DateTime(&quot;2020-03-01&quot;)))&quot;)</code></pre><pre><code class="nohighlight hljs">Policy active window: 2020-03-23T00:00:00 to 2020-06-01T00:00:00
+  Active on 2020-04-01? true
+  Active on 2020-07-01? false
+  Active on 2020-03-01? false</code></pre><h3 id="Social-Distancing"><a class="docs-heading-anchor" href="#Social-Distancing">Social Distancing</a><a id="Social-Distancing-1"></a><a class="docs-heading-anchor-permalink" href="#Social-Distancing" title="Permalink"></a></h3><p><code>SocialDistancing</code> reduces transmission by applying per-group beta scaling factors.</p><pre><code class="language-julia hljs">sd = SocialDistancing(
+    DateTime(&quot;2020-03-23&quot;),
+    DateTime(&quot;2020-06-01&quot;),
+    Dict(&quot;school&quot; =&gt; 0.5, &quot;company&quot; =&gt; 0.7, &quot;pub&quot; =&gt; 0.0),
+)
+println(&quot;Social distancing policy:&quot;)
+println(&quot;  Active: $(sd.start_time) to $(sd.end_time)&quot;)
+println(&quot;  Beta reductions:&quot;)
+for (g, f) in sort(collect(sd.beta_factors))
+    pct = round((1.0 - f) * 100, digits=0)
+    println(&quot;    $(rpad(g, 12)) factor=$(f)  ($(pct)% reduction)&quot;)
+end</code></pre><pre><code class="nohighlight hljs">Social distancing policy:
+  Active: 2020-03-23T00:00:00 to 2020-06-01T00:00:00
+  Beta reductions:
+    company      factor=0.7  (30.0% reduction)
+    pub          factor=0.0  (100.0% reduction)
+    school       factor=0.5  (50.0% reduction)</code></pre><h3 id="Stay-Home"><a class="docs-heading-anchor" href="#Stay-Home">Stay Home</a><a id="Stay-Home-1"></a><a class="docs-heading-anchor-permalink" href="#Stay-Home" title="Permalink"></a></h3><p><code>StayHome</code> keeps a fraction of the population at home.</p><pre><code class="language-julia hljs">stay = StayHome(
+    DateTime(&quot;2020-03-23&quot;),
+    DateTime(&quot;2020-06-01&quot;),
+    0.85,
+)
+println(&quot;Stay-at-home policy:&quot;)
+println(&quot;  Active: $(stay.start_time) to $(stay.end_time)&quot;)
+println(&quot;  Compliance: $(stay.compliance * 100)%&quot;)</code></pre><pre><code class="nohighlight hljs">Stay-at-home policy:
+  Active: 2020-03-23T00:00:00 to 2020-06-01T00:00:00
+  Compliance: 85.0%</code></pre><h3 id="Mask-Wearing"><a class="docs-heading-anchor" href="#Mask-Wearing">Mask Wearing</a><a id="Mask-Wearing-1"></a><a class="docs-heading-anchor-permalink" href="#Mask-Wearing" title="Permalink"></a></h3><p><code>MaskWearing</code> reduces transmission through face coverings.</p><pre><code class="language-julia hljs">masks = MaskWearing(
+    DateTime(&quot;2020-06-15&quot;),
+    nothing,   # no end date — indefinite
+    0.8,       # probability of wearing a mask
+    0.9,       # compliance
+    0.5,       # beta reduction factor when both wear masks
+)
+println(&quot;Mask wearing policy:&quot;)
+println(&quot;  Start: $(masks.start_time)&quot;)
+println(&quot;  End: $(isnothing(masks.end_time) ? &quot;indefinite&quot; : string(masks.end_time))&quot;)
+println(&quot;  Mask probability: $(masks.mask_probability * 100)%&quot;)
+println(&quot;  Compliance: $(masks.compliance * 100)%&quot;)
+println(&quot;  Beta factor: $(masks.beta_factor)&quot;)</code></pre><pre><code class="nohighlight hljs">Mask wearing policy:
+  Start: 2020-06-15T00:00:00
+  End: indefinite
+  Mask probability: 80.0%
+  Compliance: 90.0%
+  Beta factor: 0.5</code></pre><h3 id="Shielding"><a class="docs-heading-anchor" href="#Shielding">Shielding</a><a id="Shielding-1"></a><a class="docs-heading-anchor-permalink" href="#Shielding" title="Permalink"></a></h3><p><code>Shielding</code> keeps vulnerable (elderly) people at home.</p><pre><code class="language-julia hljs">shield = Shielding(
+    DateTime(&quot;2020-03-23&quot;),
+    DateTime(&quot;2020-08-01&quot;),
+    70,     # minimum age
+    0.85,   # compliance
+)
+println(&quot;Shielding policy:&quot;)
+println(&quot;  Active: $(shield.start_time) to $(shield.end_time)&quot;)
+println(&quot;  Min age: $(shield.min_age)&quot;)
+println(&quot;  Compliance: $(shield.compliance * 100)%&quot;)</code></pre><pre><code class="nohighlight hljs">Shielding policy:
+  Active: 2020-03-23T00:00:00 to 2020-08-01T00:00:00
+  Min age: 70
+  Compliance: 85.0%</code></pre><h2 id="Policy-Summary"><a class="docs-heading-anchor" href="#Policy-Summary">Policy Summary</a><a id="Policy-Summary-1"></a><a class="docs-heading-anchor-permalink" href="#Policy-Summary" title="Permalink"></a></h2><pre><code class="language-julia hljs">println(&quot;Policy Summary&quot;)
+println(&quot;══════════════════════════════════════════════════════════════════&quot;)
+println(&quot;Category     | Policy            | Key Parameter&quot;)
+println(&quot;─────────────|───────────────────|──────────────────────────────&quot;)
+println(&quot;Individual   | StayHome          | compliance=$(stay.compliance)&quot;)
+println(&quot;Individual   | Shielding         | min_age=$(shield.min_age), compliance=$(shield.compliance)&quot;)
+println(&quot;Interaction  | SocialDistancing  | school β×$(sd.beta_factors[&quot;school&quot;])&quot;)
+println(&quot;Interaction  | MaskWearing       | β×$(masks.beta_factor), prob=$(masks.mask_probability)&quot;)
+println(&quot;─────────────|───────────────────|──────────────────────────────&quot;)
+println()
+println(&quot;Policies can be loaded from YAML config files using policies_from_file().&quot;)</code></pre><pre><code class="nohighlight hljs">Policy Summary
+══════════════════════════════════════════════════════════════════
+Category     | Policy            | Key Parameter
+─────────────|───────────────────|──────────────────────────────
+Individual   | StayHome          | compliance=0.85
+Individual   | Shielding         | min_age=70, compliance=0.85
+Interaction  | SocialDistancing  | school β×0.5
+Interaction  | MaskWearing       | β×0.5, prob=0.8
+─────────────|───────────────────|──────────────────────────────
+
+Policies can be loaded from YAML config files using policies_from_file().</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../04_epidemiology/python/">« Python</a><a class="docs-footer-nextpage" href="../python/">Python »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Tuesday 7 April 2026 02:50">Tuesday 7 April 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

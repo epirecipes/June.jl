@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Python · June.jl</title><meta name="title" content="Python · June.jl"/><meta property="og:title" content="Python · June.jl"/><meta property="twitter:title" content="Python · June.jl"/><meta name="description" content="Documentation for June.jl."/><meta property="og:description" content="Documentation for June.jl."/><meta property="twitter:description" content="Documentation for June.jl."/><script data-outdated-warner src="../../../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../../../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../../../assets/documenter.js"></script><script src="../../../../search_index.js"></script><script src="../../../../siteinfo.js"></script><script src="../../../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../../../">June.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../../../">Home</a></li><li><span class="tocitem">Vignettes</span><ul><li><a class="tocitem" href="../../">Overview</a></li><li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox"/><label class="tocitem" for="menuitem-2-2"><span class="docs-label">01 Quickstart</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../01_quickstart/julia/">Julia</a></li><li><a class="tocitem" href="../../01_quickstart/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox"/><label class="tocitem" for="menuitem-2-3"><span class="docs-label">02 Geography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../02_geography/julia/">Julia</a></li><li><a class="tocitem" href="../../02_geography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox"/><label class="tocitem" for="menuitem-2-4"><span class="docs-label">03 Demography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../03_demography/julia/">Julia</a></li><li><a class="tocitem" href="../../03_demography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox"/><label class="tocitem" for="menuitem-2-5"><span class="docs-label">04 Epidemiology</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../04_epidemiology/julia/">Julia</a></li><li><a class="tocitem" href="../../04_epidemiology/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox" checked/><label class="tocitem" for="menuitem-2-6"><span class="docs-label">05 Policies</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../julia/">Julia</a></li><li class="is-active"><a class="tocitem" href>Python</a><ul class="internal"><li class="toplevel"><a class="tocitem" href="#Groups,-Interactions,-and-Policies"><span>Groups, Interactions, and Policies</span></a></li><li><a class="tocitem" href="#Setup"><span>Setup</span></a></li><li><a class="tocitem" href="#Households"><span>Households</span></a></li><li><a class="tocitem" href="#Schools"><span>Schools</span></a></li><li><a class="tocitem" href="#Companies"><span>Companies</span></a></li><li><a class="tocitem" href="#Hospitals"><span>Hospitals</span></a></li><li><a class="tocitem" href="#Group-Summary"><span>Group Summary</span></a></li><li><a class="tocitem" href="#The-Interaction-Model"><span>The Interaction Model</span></a></li><li><a class="tocitem" href="#Policies"><span>Policies</span></a></li><li><a class="tocitem" href="#Policy-Summary"><span>Policy Summary</span></a></li></ul></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox"/><label class="tocitem" for="menuitem-2-7"><span class="docs-label">06 Vaccines</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../06_vaccines/julia/">Julia</a></li><li><a class="tocitem" href="../../06_vaccines/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox"/><label class="tocitem" for="menuitem-2-8"><span class="docs-label">07 Advanced</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../07_advanced/julia/">Julia</a></li><li><a class="tocitem" href="../../07_advanced/python/">Python</a></li></ul></li></ul></li><li><a class="tocitem" href="../../../../api/">API Reference</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Vignettes</a></li><li><a class="is-disabled">05 Policies</a></li><li class="is-active"><a href>Python</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Python</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/epirecipes/June.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Groups,-Interactions,-and-Policies-in-JUNE-(Python)"><a class="docs-heading-anchor" href="#Groups,-Interactions,-and-Policies-in-JUNE-(Python)">Groups, Interactions, and Policies in JUNE (Python)</a><a id="Groups,-Interactions,-and-Policies-in-JUNE-(Python)-1"></a><a class="docs-heading-anchor-permalink" href="#Groups,-Interactions,-and-Policies-in-JUNE-(Python)" title="Permalink"></a></h1><ul><li><a href="#groups-interactions-and-policies">Groups, Interactions, and Policies</a><ul><li><a href="#setup">Setup</a></li><li><a href="#households">Households</a></li><li><a href="#schools">Schools</a></li><li><a href="#companies">Companies</a></li><li><a href="#hospitals">Hospitals</a></li><li><a href="#group-summary">Group Summary</a></li><li><a href="#the-interaction-model">The Interaction Model</a></li><li><a href="#policies">Policies</a><ul><li><a href="#social-distancing">Social Distancing</a></li><li><a href="#stay-at-home">Stay at Home</a></li><li><a href="#mask-wearing">Mask Wearing</a></li><li><a href="#shielding">Shielding</a></li></ul></li><li><a href="#policy-summary">Policy Summary</a></li></ul></li></ul><h1 id="Groups,-Interactions,-and-Policies"><a class="docs-heading-anchor" href="#Groups,-Interactions,-and-Policies">Groups, Interactions, and Policies</a><a id="Groups,-Interactions,-and-Policies-1"></a><a class="docs-heading-anchor-permalink" href="#Groups,-Interactions,-and-Policies" title="Permalink"></a></h1><p>JUNE organises people into <strong>groups</strong> — places where interactions (and disease transmission) occur. <strong>Policies</strong> modify these interactions (e.g., social distancing, school closures). This vignette demonstrates groups, the interaction model, and the policy system.</p><h2 id="Setup"><a class="docs-heading-anchor" href="#Setup">Setup</a><a id="Setup-1"></a><a class="docs-heading-anchor-permalink" href="#Setup" title="Permalink"></a></h2><pre><code class="language-python hljs">import sys, types
+fake_turtle = types.ModuleType(&#39;turtle&#39;)
+fake_turtle.home = lambda: None
+sys.modules[&#39;turtle&#39;] = fake_turtle</code></pre><h2 id="Households"><a class="docs-heading-anchor" href="#Households">Households</a><a id="Households-1"></a><a class="docs-heading-anchor-permalink" href="#Households" title="Permalink"></a></h2><p>Households are the most fundamental group.</p><pre><code class="language-python hljs">from june.demography import Person
+from june.groups import Household
+
+p1 = Person.from_attributes(sex=&#39;m&#39;, age=40)
+p2 = Person.from_attributes(sex=&#39;f&#39;, age=38)
+p3 = Person.from_attributes(sex=&#39;f&#39;, age=12)
+p4 = Person.from_attributes(sex=&#39;m&#39;, age=8)
+
+h = Household()
+h.add(p1)
+h.add(p2)
+h.add(p3)
+h.add(p4)
+
+print(f&quot;Household: {len(h.people)} residents&quot;)
+for p in h.people:
+    print(f&quot;  Person: sex={p.sex}, age={p.age}&quot;)</code></pre><pre><code class="nohighlight hljs">No --data argument given - defaulting to:
+/Users/sdwfrost/Projects/june/code/June.jl/vignettes/05_policies/python/data
+No --configs argument given - defaulting to:
+/Users/sdwfrost/Projects/june/code/JUNE/june/configs
+
+Household: 4 residents
+  Person: sex=f, age=12
+  Person: sex=m, age=8
+  Person: sex=m, age=40
+  Person: sex=f, age=38</code></pre><h2 id="Schools"><a class="docs-heading-anchor" href="#Schools">Schools</a><a id="Schools-1"></a><a class="docs-heading-anchor-permalink" href="#Schools" title="Permalink"></a></h2><p>Schools have a sector, age range, and maximum pupil capacity.</p><pre><code class="language-python hljs">from june.groups.school import School
+
+school = School(coordinates=[54.97, -1.61], n_pupils_max=300,
+                age_min=5, age_max=11, sector=&quot;primary&quot;)
+print(f&quot;School: sector={school.sector}, age_min={school.age_min}, age_max={school.age_max}&quot;)
+print(f&quot;  Max pupils: {school.n_pupils_max}&quot;)
+
+child1 = Person.from_attributes(sex=&#39;f&#39;, age=7)
+child2 = Person.from_attributes(sex=&#39;m&#39;, age=9)
+child3 = Person.from_attributes(sex=&#39;f&#39;, age=10)
+school.add(child1)
+school.add(child2)
+school.add(child3)
+print(f&quot;  Current pupils: {school.n_pupils}&quot;)</code></pre><pre><code class="nohighlight hljs">School: sector=primary, age_min=5, age_max=11
+  Max pupils: 300
+  Current pupils: 3</code></pre><h2 id="Companies"><a class="docs-heading-anchor" href="#Companies">Companies</a><a id="Companies-1"></a><a class="docs-heading-anchor-permalink" href="#Companies" title="Permalink"></a></h2><p>Companies are workplaces with a sector and maximum worker capacity.</p><pre><code class="language-python hljs">from june.groups.company import Company
+
+c1 = Company(sector=&quot;Q&quot;, n_workers_max=20)
+c2 = Company(sector=&quot;G&quot;, n_workers_max=5)
+
+w1 = Person.from_attributes(sex=&#39;m&#39;, age=30)
+w2 = Person.from_attributes(sex=&#39;f&#39;, age=45)
+w3 = Person.from_attributes(sex=&#39;m&#39;, age=55)
+c1.add(w1)
+c1.add(w2)
+c2.add(w3)
+
+print(f&quot;Company 1: sector={c1.sector}, workers={c1.n_workers}/{c1.n_workers_max}&quot;)
+print(f&quot;Company 2: sector={c2.sector}, workers={c2.n_workers}/{c2.n_workers_max}&quot;)</code></pre><pre><code class="nohighlight hljs">Company 1: sector=Q, workers=2/20
+Company 2: sector=G, workers=1/5</code></pre><h2 id="Hospitals"><a class="docs-heading-anchor" href="#Hospitals">Hospitals</a><a id="Hospitals-1"></a><a class="docs-heading-anchor-permalink" href="#Hospitals" title="Permalink"></a></h2><pre><code class="language-python hljs">from june.groups.hospital import Hospital
+
+hosp = Hospital(n_beds=100, n_icu_beds=10, trust_code=&quot;NT1&quot;)
+print(f&quot;Hospital: trust_code={hosp.trust_code}&quot;)
+print(f&quot;  Beds: {hosp.n_beds}, ICU beds: {hosp.n_icu_beds}&quot;)</code></pre><pre><code class="nohighlight hljs">Hospital: trust_code=NT1
+  Beds: 100, ICU beds: 10</code></pre><h2 id="Group-Summary"><a class="docs-heading-anchor" href="#Group-Summary">Group Summary</a><a id="Group-Summary-1"></a><a class="docs-heading-anchor-permalink" href="#Group-Summary" title="Permalink"></a></h2><pre><code class="language-python hljs">print(f&quot;{&#39;Group Type&#39;:&lt;18} | {&#39;Example&#39;:&lt;18} | People&quot;)
+print(&quot;─&quot; * 18 + &quot;|&quot; + &quot;─&quot; * 20 + &quot;|&quot; + &quot;─&quot; * 8)
+print(f&quot;{&#39;Household&#39;:&lt;18} | {&#39;Family home&#39;:&lt;18} | {len(h.people)}&quot;)
+print(f&quot;{&#39;School&#39;:&lt;18} | {&#39;Primary school&#39;:&lt;18} | {school.n_pupils}&quot;)
+print(f&quot;{&#39;Company&#39;:&lt;18} | {&#39;Sector Q firm&#39;:&lt;18} | {c1.n_workers}&quot;)
+print(f&quot;{&#39;Hospital&#39;:&lt;18} | {&#39;NT1 trust&#39;:&lt;18} | {hosp.n_beds} beds&quot;)</code></pre><pre><code class="nohighlight hljs">Group Type         | Example            | People
+──────────────────|────────────────────|────────
+Household          | Family home        | 4
+School             | Primary school     | 3
+Company            | Sector Q firm      | 2
+Hospital           | NT1 trust          | 100 beds</code></pre><h2 id="The-Interaction-Model"><a class="docs-heading-anchor" href="#The-Interaction-Model">The Interaction Model</a><a id="The-Interaction-Model-1"></a><a class="docs-heading-anchor-permalink" href="#The-Interaction-Model" title="Permalink"></a></h2><p>The <code>Interaction</code> class controls how disease spreads within groups. It is parameterised by:</p><ul><li><strong><code>alpha_physical</code></strong>: Scaling factor for physical (vs. non-physical) contacts</li><li><strong><code>betas</code></strong>: Per-group transmission intensities</li><li><strong><code>contact_matrices</code></strong>: Contact patterns within subgroups of each group type</li></ul><pre><code class="language-python hljs">import numpy as np
+
+betas = {
+    &quot;household&quot;: 0.208,
+    &quot;school&quot;: 0.070,
+    &quot;company&quot;: 0.371,
+    &quot;pub&quot;: 0.429,
+    &quot;grocery&quot;: 0.041,
+}
+
+print(&quot;Interaction model:&quot;)
+print(f&quot;  alpha_physical: 2.0&quot;)
+print(f&quot;  Group betas:&quot;)
+for g, b in sorted(betas.items(), key=lambda x: -x[1]):
+    bar = &quot;█&quot; * int(b * 40)
+    print(f&quot;    {g:&lt;12} β={b:&lt;6} {bar}&quot;)</code></pre><pre><code class="nohighlight hljs">Interaction model:
+  alpha_physical: 2.0
+  Group betas:
+    pub          β=0.429  █████████████████
+    company      β=0.371  ██████████████
+    household    β=0.208  ████████
+    school       β=0.07   ██
+    grocery      β=0.041  █</code></pre><h2 id="Policies"><a class="docs-heading-anchor" href="#Policies">Policies</a><a id="Policies-1"></a><a class="docs-heading-anchor-permalink" href="#Policies" title="Permalink"></a></h2><p>Policies modify behaviour during a simulation. They are organised into categories:</p><ul><li><strong>Individual policies</strong>: Keep people at home (e.g., stay-at-home, quarantine, shielding)</li><li><strong>Interaction policies</strong>: Reduce transmission (e.g., social distancing, mask wearing)</li><li><strong>Leisure policies</strong>: Close or limit leisure venues</li></ul><h3 id="Social-Distancing"><a class="docs-heading-anchor" href="#Social-Distancing">Social Distancing</a><a id="Social-Distancing-1"></a><a class="docs-heading-anchor-permalink" href="#Social-Distancing" title="Permalink"></a></h3><p>Social distancing reduces transmission by applying per-group beta scaling factors.</p><pre><code class="language-python hljs">from datetime import datetime
+
+# Define a social distancing policy
+sd_start = datetime(2020, 3, 23)
+sd_end = datetime(2020, 6, 1)
+sd_beta_factors = {&quot;school&quot;: 0.5, &quot;company&quot;: 0.7, &quot;pub&quot;: 0.0}
+
+print(&quot;Social distancing policy:&quot;)
+print(f&quot;  Active: {sd_start} to {sd_end}&quot;)
+print(f&quot;  Beta reductions:&quot;)
+for g, f in sorted(sd_beta_factors.items()):
+    pct = round((1.0 - f) * 100)
+    print(f&quot;    {g:&lt;12} factor={f}  ({pct}% reduction)&quot;)</code></pre><pre><code class="nohighlight hljs">Social distancing policy:
+  Active: 2020-03-23 00:00:00 to 2020-06-01 00:00:00
+  Beta reductions:
+    company      factor=0.7  (30% reduction)
+    pub          factor=0.0  (100% reduction)
+    school       factor=0.5  (50% reduction)</code></pre><h3 id="Stay-at-Home"><a class="docs-heading-anchor" href="#Stay-at-Home">Stay at Home</a><a id="Stay-at-Home-1"></a><a class="docs-heading-anchor-permalink" href="#Stay-at-Home" title="Permalink"></a></h3><p>A stay-at-home order keeps a fraction of the population at home.</p><pre><code class="language-python hljs">stay_compliance = 0.85
+
+print(&quot;Stay-at-home policy:&quot;)
+print(f&quot;  Active: {sd_start} to {sd_end}&quot;)
+print(f&quot;  Compliance: {stay_compliance * 100}%&quot;)</code></pre><pre><code class="nohighlight hljs">Stay-at-home policy:
+  Active: 2020-03-23 00:00:00 to 2020-06-01 00:00:00
+  Compliance: 85.0%</code></pre><h3 id="Mask-Wearing"><a class="docs-heading-anchor" href="#Mask-Wearing">Mask Wearing</a><a id="Mask-Wearing-1"></a><a class="docs-heading-anchor-permalink" href="#Mask-Wearing" title="Permalink"></a></h3><p>Mask wearing reduces transmission through face coverings.</p><pre><code class="language-python hljs">mask_start = datetime(2020, 6, 15)
+mask_probability = 0.8
+mask_compliance = 0.9
+mask_beta_factor = 0.5
+
+print(&quot;Mask wearing policy:&quot;)
+print(f&quot;  Start: {mask_start}&quot;)
+print(f&quot;  End: indefinite&quot;)
+print(f&quot;  Mask probability: {mask_probability * 100}%&quot;)
+print(f&quot;  Compliance: {mask_compliance * 100}%&quot;)
+print(f&quot;  Beta factor: {mask_beta_factor}&quot;)</code></pre><pre><code class="nohighlight hljs">Mask wearing policy:
+  Start: 2020-06-15 00:00:00
+  End: indefinite
+  Mask probability: 80.0%
+  Compliance: 90.0%
+  Beta factor: 0.5</code></pre><h3 id="Shielding"><a class="docs-heading-anchor" href="#Shielding">Shielding</a><a id="Shielding-1"></a><a class="docs-heading-anchor-permalink" href="#Shielding" title="Permalink"></a></h3><p>Shielding keeps vulnerable (elderly) people at home.</p><pre><code class="language-python hljs">shield_start = datetime(2020, 3, 23)
+shield_end = datetime(2020, 8, 1)
+shield_min_age = 70
+shield_compliance = 0.85
+
+print(&quot;Shielding policy:&quot;)
+print(f&quot;  Active: {shield_start} to {shield_end}&quot;)
+print(f&quot;  Min age: {shield_min_age}&quot;)
+print(f&quot;  Compliance: {shield_compliance * 100}%&quot;)</code></pre><pre><code class="nohighlight hljs">Shielding policy:
+  Active: 2020-03-23 00:00:00 to 2020-08-01 00:00:00
+  Min age: 70
+  Compliance: 85.0%</code></pre><h2 id="Policy-Summary"><a class="docs-heading-anchor" href="#Policy-Summary">Policy Summary</a><a id="Policy-Summary-1"></a><a class="docs-heading-anchor-permalink" href="#Policy-Summary" title="Permalink"></a></h2><pre><code class="language-python hljs">print(&quot;Policy Summary&quot;)
+print(&quot;═&quot; * 66)
+print(f&quot;{&#39;Category&#39;:&lt;13} | {&#39;Policy&#39;:&lt;18} | Key Parameter&quot;)
+print(&quot;─&quot; * 13 + &quot;|&quot; + &quot;─&quot; * 20 + &quot;|&quot; + &quot;─&quot; * 31)
+print(f&quot;{&#39;Individual&#39;:&lt;13} | {&#39;StayHome&#39;:&lt;18} | compliance={stay_compliance}&quot;)
+print(f&quot;{&#39;Individual&#39;:&lt;13} | {&#39;Shielding&#39;:&lt;18} | min_age={shield_min_age}, compliance={shield_compliance}&quot;)
+print(f&quot;{&#39;Interaction&#39;:&lt;13} | {&#39;SocialDistancing&#39;:&lt;18} | school β×{sd_beta_factors[&#39;school&#39;]}&quot;)
+print(f&quot;{&#39;Interaction&#39;:&lt;13} | {&#39;MaskWearing&#39;:&lt;18} | β×{mask_beta_factor}, prob={mask_probability}&quot;)
+print(&quot;─&quot; * 13 + &quot;|&quot; + &quot;─&quot; * 20 + &quot;|&quot; + &quot;─&quot; * 31)
+print()
+print(&quot;In full JUNE simulations, policies are loaded from YAML config files.&quot;)</code></pre><pre><code class="nohighlight hljs">Policy Summary
+══════════════════════════════════════════════════════════════════
+Category      | Policy             | Key Parameter
+─────────────|────────────────────|───────────────────────────────
+Individual    | StayHome           | compliance=0.85
+Individual    | Shielding          | min_age=70, compliance=0.85
+Interaction   | SocialDistancing   | school β×0.5
+Interaction   | MaskWearing        | β×0.5, prob=0.8
+─────────────|────────────────────|───────────────────────────────
+
+In full JUNE simulations, policies are loaded from YAML config files.</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../julia/">« Julia</a><a class="docs-footer-nextpage" href="../../06_vaccines/julia/">Julia »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Tuesday 7 April 2026 02:50">Tuesday 7 April 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

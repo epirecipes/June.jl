@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Julia · June.jl</title><meta name="title" content="Julia · June.jl"/><meta property="og:title" content="Julia · June.jl"/><meta property="twitter:title" content="Julia · June.jl"/><meta name="description" content="Documentation for June.jl."/><meta property="og:description" content="Documentation for June.jl."/><meta property="twitter:description" content="Documentation for June.jl."/><script data-outdated-warner src="../../../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../../../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../../../assets/documenter.js"></script><script src="../../../../search_index.js"></script><script src="../../../../siteinfo.js"></script><script src="../../../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../../../">June.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../../../">Home</a></li><li><span class="tocitem">Vignettes</span><ul><li><a class="tocitem" href="../../">Overview</a></li><li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox"/><label class="tocitem" for="menuitem-2-2"><span class="docs-label">01 Quickstart</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../01_quickstart/julia/">Julia</a></li><li><a class="tocitem" href="../../01_quickstart/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox"/><label class="tocitem" for="menuitem-2-3"><span class="docs-label">02 Geography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../02_geography/julia/">Julia</a></li><li><a class="tocitem" href="../../02_geography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox"/><label class="tocitem" for="menuitem-2-4"><span class="docs-label">03 Demography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../03_demography/julia/">Julia</a></li><li><a class="tocitem" href="../../03_demography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox"/><label class="tocitem" for="menuitem-2-5"><span class="docs-label">04 Epidemiology</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../04_epidemiology/julia/">Julia</a></li><li><a class="tocitem" href="../../04_epidemiology/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox"/><label class="tocitem" for="menuitem-2-6"><span class="docs-label">05 Policies</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../05_policies/julia/">Julia</a></li><li><a class="tocitem" href="../../05_policies/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox"/><label class="tocitem" for="menuitem-2-7"><span class="docs-label">06 Vaccines</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../06_vaccines/julia/">Julia</a></li><li><a class="tocitem" href="../../06_vaccines/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox" checked/><label class="tocitem" for="menuitem-2-8"><span class="docs-label">07 Advanced</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href>Julia</a><ul class="internal"><li class="toplevel"><a class="tocitem" href="#Advanced:-Simulation-Walkthrough"><span>Advanced: Simulation Walkthrough</span></a></li><li><a class="tocitem" href="#The-Timer"><span>The Timer</span></a></li><li><a class="tocitem" href="#The-World"><span>The World</span></a></li><li><a class="tocitem" href="#The-Interaction-Model"><span>The Interaction Model</span></a></li><li><a class="tocitem" href="#The-Record"><span>The Record</span></a></li><li><a class="tocitem" href="#Mini-Simulation-Loop"><span>Mini Simulation Loop</span></a></li><li><a class="tocitem" href="#Full-Simulation-Architecture"><span>Full Simulation Architecture</span></a></li><li><a class="tocitem" href="#Weekday-vs-Weekend-Step-Counts"><span>Weekday vs Weekend Step Counts</span></a></li></ul></li><li><a class="tocitem" href="../python/">Python</a></li></ul></li></ul></li><li><a class="tocitem" href="../../../../api/">API Reference</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Vignettes</a></li><li><a class="is-disabled">07 Advanced</a></li><li class="is-active"><a href>Julia</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Julia</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/epirecipes/June.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Advanced:-Simulation-Walkthrough-in-June.jl"><a class="docs-heading-anchor" href="#Advanced:-Simulation-Walkthrough-in-June.jl">Advanced: Simulation Walkthrough in June.jl</a><a id="Advanced:-Simulation-Walkthrough-in-June.jl-1"></a><a class="docs-heading-anchor-permalink" href="#Advanced:-Simulation-Walkthrough-in-June.jl" title="Permalink"></a></h1><ul><li><a href="#advanced-simulation-walkthrough">Advanced: Simulation Walkthrough</a><ul><li><a href="#the-timer">The Timer</a><ul><li><a href="#creating-a-timer">Creating a Timer</a></li><li><a href="#day-type-detection">Day Type Detection</a></li><li><a href="#step-duration">Step Duration</a></li><li><a href="#advancing-through-time">Advancing Through Time</a></li><li><a href="#timer-as-an-iterator">Timer as an Iterator</a></li></ul></li><li><a href="#the-world">The World</a><ul><li><a href="#populating-a-world-manually">Populating a World Manually</a></li></ul></li><li><a href="#the-interaction-model">The Interaction Model</a></li><li><a href="#the-record">The Record</a></li><li><a href="#mini-simulation-loop">Mini Simulation Loop</a></li><li><a href="#full-simulation-architecture">Full Simulation Architecture</a></li><li><a href="#weekday-vs-weekend-step-counts">Weekday vs Weekend Step Counts</a></li></ul></li></ul><h1 id="Advanced:-Simulation-Walkthrough"><a class="docs-heading-anchor" href="#Advanced:-Simulation-Walkthrough">Advanced: Simulation Walkthrough</a><a id="Advanced:-Simulation-Walkthrough-1"></a><a class="docs-heading-anchor-permalink" href="#Advanced:-Simulation-Walkthrough" title="Permalink"></a></h1><p>This vignette ties together all the building blocks — Timer, World, Interaction, Epidemiology, and Records — into a complete end-to-end simulation.</p><h2 id="The-Timer"><a class="docs-heading-anchor" href="#The-Timer">The Timer</a><a id="The-Timer-1"></a><a class="docs-heading-anchor-permalink" href="#The-Timer" title="Permalink"></a></h2><p>The <code>Timer</code> drives the simulation clock. It manages weekday/weekend schedules, time steps of varying duration, and tracks the progression of simulated days.</p><h3 id="Creating-a-Timer"><a class="docs-heading-anchor" href="#Creating-a-Timer">Creating a Timer</a><a id="Creating-a-Timer-1"></a><a class="docs-heading-anchor-permalink" href="#Creating-a-Timer" title="Permalink"></a></h3><pre><code class="language-julia hljs">using June
+using Dates
+import June: Timer as JTimer
+
+initial_day = DateTime(&quot;2020-03-02&quot;, dateformat&quot;yyyy-mm-dd&quot;)
+total_days = 7
+final_date = initial_day + Day(total_days)
+
+weekday_step = [8.0, 8.0, 8.0]   # 3 steps per weekday (8h each = 24h)
+weekend_step = [12.0, 12.0]       # 2 steps per weekend day (12h each = 24h)
+weekday_activities = [String[] for _ in 1:3]
+weekend_activities = [String[] for _ in 1:2]
+
+timer = JTimer(
+    initial_day, total_days,
+    initial_day, initial_day,     # date, previous_date
+    final_date,
+    0, 0.0,                       # shift, now
+    weekday_step, weekend_step,
+    weekday_activities, weekend_activities,
+    Millisecond(0), 0.0           # delta_time, duration
+)
+println(timer)
+println(&quot;  Initial date: $(timer.date)&quot;)
+println(&quot;  Final date:   $(timer.final_date)&quot;)
+println(&quot;  Total days:   $(timer.total_days)&quot;)</code></pre><pre><code class="nohighlight hljs">Timer(date=2020-03-02T00:00:00, day=0.0, shift=0)
+  Initial date: 2020-03-02T00:00:00
+  Final date:   2020-03-09T00:00:00
+  Total days:   7</code></pre><h3 id="Day-Type-Detection"><a class="docs-heading-anchor" href="#Day-Type-Detection">Day Type Detection</a><a id="Day-Type-Detection-1"></a><a class="docs-heading-anchor-permalink" href="#Day-Type-Detection" title="Permalink"></a></h3><p>The timer knows whether the current date is a weekday or weekend.</p><pre><code class="language-julia hljs">println(&quot;Date: $(timer.date) ($(Dates.dayname(timer.date)))&quot;)
+println(&quot;  Is weekend: $(is_weekend(timer))&quot;)
+println(&quot;  Day type: $(day_type(timer))&quot;)</code></pre><pre><code class="nohighlight hljs">Date: 2020-03-02T00:00:00 (Monday)
+  Is weekend: false
+  Day type: weekday</code></pre><h3 id="Step-Duration"><a class="docs-heading-anchor" href="#Step-Duration">Step Duration</a><a id="Step-Duration-1"></a><a class="docs-heading-anchor-permalink" href="#Step-Duration" title="Permalink"></a></h3><p>Weekdays have 3 steps of 8 hours; weekends have 2 steps of 12 hours.</p><pre><code class="language-julia hljs">println(&quot;Weekday steps: $(timer.weekday_step_duration) hours  ($(sum(timer.weekday_step_duration))h total)&quot;)
+println(&quot;Weekend steps: $(timer.weekend_step_duration) hours  ($(sum(timer.weekend_step_duration))h total)&quot;)</code></pre><pre><code class="nohighlight hljs">Weekday steps: [8.0, 8.0, 8.0] hours  (24.0h total)
+Weekend steps: [12.0, 12.0] hours  (24.0h total)</code></pre><h3 id="Advancing-Through-Time"><a class="docs-heading-anchor" href="#Advancing-Through-Time">Advancing Through Time</a><a id="Advancing-Through-Time-1"></a><a class="docs-heading-anchor-permalink" href="#Advancing-Through-Time" title="Permalink"></a></h3><p>Each call to <code>advance!</code> moves the timer forward by one step. The shift counter cycles through the steps for the current day type.</p><pre><code class="language-julia hljs">println(&quot;Step | Date                | Day       | Shift | Elapsed (days) | Duration (h)&quot;)
+println(&quot;─────|─────────────────────|───────────|───────|────────────────|─────────────&quot;)
+step = 0
+while advance!(timer)
+    step += 1
+    d = Dates.format(timer.date, &quot;yyyy-mm-dd HH:MM&quot;)
+    dn = rpad(Dates.dayname(timer.date), 9)
+    elapsed = round(timer.now, digits=3)
+    dur_h = round(timer.duration * 24, digits=1)
+    println(lpad(step, 4), &quot; | &quot;, d, &quot; | &quot;, dn, &quot; | &quot;, lpad(timer.shift, 5),
+            &quot; | &quot;, lpad(elapsed, 14), &quot; | &quot;, lpad(dur_h, 11))
+    if step &gt;= 25
+        println(&quot;  ... (truncated)&quot;)
+        break
+    end
+end</code></pre><pre><code class="nohighlight hljs">Step | Date                | Day       | Shift | Elapsed (days) | Duration (h)
+─────|─────────────────────|───────────|───────|────────────────|─────────────
+   1 | 2020-03-02 08:00 | Monday    |     1 |          0.333 |         8.0
+   2 | 2020-03-02 16:00 | Monday    |     2 |          0.667 |         8.0
+   3 | 2020-03-03 00:00 | Tuesday   |     0 |            1.0 |         8.0
+   4 | 2020-03-03 08:00 | Tuesday   |     1 |          1.333 |         8.0
+   5 | 2020-03-03 16:00 | Tuesday   |     2 |          1.667 |         8.0
+   6 | 2020-03-04 00:00 | Wednesday |     0 |            2.0 |         8.0
+   7 | 2020-03-04 08:00 | Wednesday |     1 |          2.333 |         8.0
+   8 | 2020-03-04 16:00 | Wednesday |     2 |          2.667 |         8.0
+   9 | 2020-03-05 00:00 | Thursday  |     0 |            3.0 |         8.0
+  10 | 2020-03-05 08:00 | Thursday  |     1 |          3.333 |         8.0
+  11 | 2020-03-05 16:00 | Thursday  |     2 |          3.667 |         8.0
+  12 | 2020-03-06 00:00 | Friday    |     0 |            4.0 |         8.0
+  13 | 2020-03-06 08:00 | Friday    |     1 |          4.333 |         8.0
+  14 | 2020-03-06 16:00 | Friday    |     2 |          4.667 |         8.0
+  15 | 2020-03-07 00:00 | Saturday  |     0 |            5.0 |         8.0
+  16 | 2020-03-07 12:00 | Saturday  |     1 |            5.5 |        12.0
+  17 | 2020-03-08 00:00 | Sunday    |     0 |            6.0 |        12.0
+  18 | 2020-03-08 12:00 | Sunday    |     1 |            6.5 |        12.0
+  19 | 2020-03-09 00:00 | Monday    |     0 |            7.0 |        12.0</code></pre><h3 id="Timer-as-an-Iterator"><a class="docs-heading-anchor" href="#Timer-as-an-Iterator">Timer as an Iterator</a><a id="Timer-as-an-Iterator-1"></a><a class="docs-heading-anchor-permalink" href="#Timer-as-an-Iterator" title="Permalink"></a></h3><p>The <code>Timer</code> implements Julia’s iteration protocol, so you can use it in a <code>for</code> loop.</p><pre><code class="language-julia hljs">timer2 = JTimer(
+    DateTime(&quot;2020-03-07&quot;), 3,
+    DateTime(&quot;2020-03-07&quot;), DateTime(&quot;2020-03-07&quot;),
+    DateTime(&quot;2020-03-10&quot;),
+    0, 0.0,
+    [8.0, 8.0, 8.0], [12.0, 12.0],
+    [String[] for _ in 1:3], [String[] for _ in 1:2],
+    Millisecond(0), 0.0,
+)
+
+println(&quot;Iterating over a 3-day timer (starting Saturday):&quot;)
+step = 0
+for t in timer2
+    step += 1
+    println(&quot;  Step $step: $(Dates.format(t.date, &quot;yyyy-mm-dd HH:MM&quot;)) &quot; *
+            &quot;($(Dates.dayname(t.date)), shift=$(t.shift))&quot;)
+end
+println(&quot;Total steps: $step&quot;)</code></pre><pre><code class="nohighlight hljs">Iterating over a 3-day timer (starting Saturday):
+  Step 1: 2020-03-07 12:00 (Saturday, shift=1)
+  Step 2: 2020-03-08 00:00 (Sunday, shift=0)
+  Step 3: 2020-03-08 12:00 (Sunday, shift=1)
+  Step 4: 2020-03-09 00:00 (Monday, shift=0)
+  Step 5: 2020-03-09 08:00 (Monday, shift=1)
+  Step 6: 2020-03-09 16:00 (Monday, shift=2)
+  Step 7: 2020-03-10 00:00 (Tuesday, shift=0)
+Total steps: 7</code></pre><h2 id="The-World"><a class="docs-heading-anchor" href="#The-World">The World</a><a id="The-World-1"></a><a class="docs-heading-anchor-permalink" href="#The-World" title="Permalink"></a></h2><p>A <code>World</code> holds the entire simulation state: people, geography, and groups.</p><pre><code class="language-julia hljs">world = World()
+println(&quot;Empty world created&quot;)
+println(&quot;  People: $(isnothing(world.people) ? 0 : length(world.people))&quot;)</code></pre><pre><code class="nohighlight hljs">Empty world created
+  People: 0</code></pre><h3 id="Populating-a-World-Manually"><a class="docs-heading-anchor" href="#Populating-a-World-Manually">Populating a World Manually</a><a id="Populating-a-World-Manually-1"></a><a class="docs-heading-anchor-permalink" href="#Populating-a-World-Manually" title="Permalink"></a></h3><p>We can build a small world by hand for demonstration purposes.</p><pre><code class="language-julia hljs">reset_person_ids!()
+reset_group_ids!()
+reset_geography_counters!()
+
+# Geography
+area1 = Area(; name=&quot;E00001&quot;, coordinates=(51.5, -0.12))
+area2 = Area(; name=&quot;E00002&quot;, coordinates=(51.51, -0.11))
+sa = SuperArea(; name=&quot;E02000001&quot;, coordinates=(51.505, -0.115), areas=[area1, area2])
+area1.super_area = sa
+area2.super_area = sa
+region = Region(; name=&quot;London&quot;, super_areas=[sa])
+sa.region = region
+
+# Population
+pop = Population()
+people_list = Person[]
+ages = [5, 8, 32, 35, 42, 55, 68, 75]
+for (i, age) in enumerate(ages)
+    p = Person(; sex=i % 2 == 0 ? &#39;f&#39; : &#39;m&#39;, age=age)
+    add!(pop, p)
+    push!(people_list, p)
+    add!(area1, p)
+end
+
+# Groups
+h1 = Household()
+add!(h1, people_list[1])  # child (5)
+add!(h1, people_list[3])  # parent (32)
+add!(h1, people_list[4])  # parent (35)
+
+h2 = Household()
+add!(h2, people_list[5])  # adult (42)
+add!(h2, people_list[6])  # adult (55)
+
+h3 = Household()
+add!(h3, people_list[7])  # elderly (68)
+add!(h3, people_list[8])  # elderly (75)
+
+school = School((51.5, -0.12), 200, 5, 11, &quot;primary&quot;)
+add!(school, people_list[1])
+add!(school, people_list[2])
+
+company = Company(; sector=&quot;Q&quot;, n_workers_max=20)
+add!(company, people_list[5])
+add!(company, people_list[6])
+
+println(&quot;Mini-world summary:&quot;)
+println(&quot;  Region: $(region.name)&quot;)
+println(&quot;  Areas: 2&quot;)
+println(&quot;  People: $(length(members(pop)))&quot;)
+println(&quot;  Households: 3 ($(n_residents(h1))+$(n_residents(h2))+$(n_residents(h3)) residents)&quot;)
+println(&quot;  School: $(length(people(school))) pupils&quot;)
+println(&quot;  Company: $(length(people(company))) workers&quot;)</code></pre><pre><code class="nohighlight hljs">Mini-world summary:
+  Region: London
+  Areas: 2
+  People: 8
+  Households: 3 (3+2+2 residents)
+  School: 2 pupils
+  Company: 2 workers</code></pre><h2 id="The-Interaction-Model"><a class="docs-heading-anchor" href="#The-Interaction-Model">The Interaction Model</a><a id="The-Interaction-Model-1"></a><a class="docs-heading-anchor-permalink" href="#The-Interaction-Model" title="Permalink"></a></h2><p>The <code>Interaction</code> type controls how disease spreads within groups.</p><pre><code class="language-julia hljs">betas = Dict(
+    &quot;household&quot; =&gt; 0.208,
+    &quot;school&quot; =&gt; 0.070,
+    &quot;company&quot; =&gt; 0.371,
+)
+contact_matrices = Dict(
+    &quot;household&quot; =&gt; Float64[1.0 0.5 0.3 0.2; 0.5 1.0 0.5 0.3; 0.3 0.5 1.0 0.5; 0.2 0.3 0.5 1.0],
+    &quot;school&quot; =&gt; Float64[1.0 0.3; 0.3 1.0],
+    &quot;company&quot; =&gt; ones(1, 1),
+)
+interaction = Interaction(2.0, betas, contact_matrices, Dict{String, Float64}())
+println(&quot;Interaction model:&quot;)
+println(&quot;  alpha_physical = $(interaction.alpha_physical)&quot;)
+for (g, b) in sort(collect(interaction.betas), by=x-&gt;x[2], rev=true)
+    bar = repeat(&quot;█&quot;, round(Int, b * 40))
+    println(&quot;  $(rpad(g, 12)) β = $b  $bar&quot;)
+end</code></pre><pre><code class="nohighlight hljs">Interaction model:
+  alpha_physical = 2.0
+  company      β = 0.371  ███████████████
+  household    β = 0.208  ████████
+  school       β = 0.07  ███</code></pre><h2 id="The-Record"><a class="docs-heading-anchor" href="#The-Record">The Record</a><a id="The-Record-1"></a><a class="docs-heading-anchor-permalink" href="#The-Record" title="Permalink"></a></h2><p>A <code>Record</code> accumulates simulation output — infections, recoveries, deaths, hospitalisations.</p><pre><code class="language-julia hljs">record = Record(; record_path=tempdir())
+println(&quot;Record created&quot;)
+println(&quot;  Path: $(record.record_path)&quot;)
+
+# Record some events
+accumulate_infection!(record; person_id=1, time=0.5, infection_id=0)
+accumulate_infection!(record; person_id=3, time=1.0, infection_id=0)
+println(&quot;  Infection events: $(length(record.infection_buffer))&quot;)
+for evt in record.infection_buffer
+    println(&quot;    person_id=$(evt.person_id), time=$(evt.time)&quot;)
+end</code></pre><pre><code class="nohighlight hljs">Record created
+  Path: /var/folders/yh/30rj513j6mn1n7x556c2v4w80000gn/T
+  Infection events: 2
+    person_id=1, time=0.5
+    person_id=3, time=1.0</code></pre><h2 id="Mini-Simulation-Loop"><a class="docs-heading-anchor" href="#Mini-Simulation-Loop">Mini Simulation Loop</a><a id="Mini-Simulation-Loop-1"></a><a class="docs-heading-anchor-permalink" href="#Mini-Simulation-Loop" title="Permalink"></a></h2><p>In a full simulation, the <code>Simulator</code> struct wires together <code>World</code>, <code>Interaction</code>, <code>Timer</code>, <code>ActivityManager</code>, and <code>Epidemiology</code>, typically configured from YAML files via <code>simulator_from_file</code>. Here we sketch the core simulation loop to illustrate the mechanics.</p><pre><code class="language-julia hljs">using Random
+
+println(&quot;=== Mini SIR Simulation ===&quot;)
+println()
+
+# Parameters
+n_people = 200
+n_days = 30
+beta = 0.3
+gamma = 0.1   # recovery probability per day
+n_initial = 5
+
+rng = MersenneTwister(42)
+
+# Population with households
+reset_person_ids!()
+reset_group_ids!()
+pop = Population()
+all_people = Person[]
+for i in 1:n_people
+    p = Person(; sex=rand(rng, [&#39;m&#39;,&#39;f&#39;]), age=rand(rng, 5:80))
+    add!(pop, p)
+    push!(all_people, p)
+end
+
+# Create households (groups of 2-5)
+households = Household[]
+idx = 1
+while idx &lt;= n_people
+    hh = Household()
+    hh_size = min(rand(rng, 2:5), n_people - idx + 1)
+    for j in 0:hh_size-1
+        add!(hh, all_people[idx + j])
+    end
+    push!(households, hh)
+    idx += hh_size
+end
+
+# State tracking: S=0, I=1, R=2
+state = zeros(Int, n_people)
+infected_day = zeros(Int, n_people)
+
+# Seed infections
+seeds = randperm(rng, n_people)[1:n_initial]
+for s in seeds
+    state[s] = 1
+    infected_day[s] = 0
+end
+
+# Run simulation
+S_counts = [count(==(0), state)]
+I_counts = [count(==(1), state)]
+R_counts = [count(==(2), state)]
+
+for day in 1:n_days
+    # Transmission within households
+    for hh in households
+        members_list = collect(people(hh))
+        n_inf = count(p -&gt; state[p.id] == 1, members_list)
+        n_inf == 0 &amp;&amp; continue
+        for p in members_list
+            state[p.id] == 0 || continue
+            # Each infected housemate has beta chance of transmitting
+            prob = 1.0 - (1.0 - beta / length(members_list))^n_inf
+            if rand(rng) &lt; prob
+                state[p.id] = 1
+                infected_day[p.id] = day
+            end
+        end
+    end
+
+    # Recovery
+    for i in 1:n_people
+        if state[i] == 1 &amp;&amp; (day - infected_day[i]) &gt;= 3
+            if rand(rng) &lt; gamma
+                state[i] = 2
+            end
+        end
+    end
+
+    push!(S_counts, count(==(0), state))
+    push!(I_counts, count(==(1), state))
+    push!(R_counts, count(==(2), state))
+end
+
+# Display trajectory
+println(&quot;Day | Susceptible | Infected | Recovered&quot;)
+println(&quot;────|─────────────|──────────|──────────&quot;)
+for d in [0, 5, 10, 15, 20, 25, 30]
+    i = d + 1
+    bar_s = repeat(&quot;░&quot;, max(0, div(S_counts[i], 5)))
+    bar_i = repeat(&quot;█&quot;, max(0, div(I_counts[i], 5)))
+    bar_r = repeat(&quot;▓&quot;, max(0, div(R_counts[i], 5)))
+    println(lpad(d, 3), &quot; | &quot;, lpad(S_counts[i], 11), &quot; | &quot;,
+            lpad(I_counts[i], 8), &quot; | &quot;, lpad(R_counts[i], 8),
+            &quot;  &quot;, bar_s, bar_i, bar_r)
+end
+println()
+println(&quot;Final: S=$(S_counts[end]) I=$(I_counts[end]) R=$(R_counts[end])&quot;)
+println(&quot;Attack rate: $(round(100 * R_counts[end] / n_people, digits=1))%&quot;)</code></pre><pre><code class="nohighlight hljs">=== Mini SIR Simulation ===
+
+Day | Susceptible | Infected | Recovered
+────|─────────────|──────────|──────────
+  0 |         195 |        5 |        0  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+  5 |         189 |        7 |        4  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+ 10 |         188 |        5 |        7  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█▓
+ 15 |         188 |        3 |        9  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓
+ 20 |         187 |        3 |       10  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
+ 25 |         187 |        2 |       11  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
+ 30 |         187 |        2 |       11  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
+
+Final: S=187 I=2 R=11
+Attack rate: 5.5%</code></pre><h2 id="Full-Simulation-Architecture"><a class="docs-heading-anchor" href="#Full-Simulation-Architecture">Full Simulation Architecture</a><a id="Full-Simulation-Architecture-1"></a><a class="docs-heading-anchor-permalink" href="#Full-Simulation-Architecture" title="Permalink"></a></h2><p>In practice, a full JUNE simulation uses config-driven setup:</p><pre><code class="language-julia hljs">println(&quot;Full JUNE Simulation Architecture&quot;)
+println(&quot;═&quot; ^ 50)
+println()
+println(&quot;  ┌─────────────┐   YAML configs&quot;)
+println(&quot;  │  Geography   │ ← area coordinates, population data&quot;)
+println(&quot;  │  Demography  │ ← age/sex distributions, comorbidities&quot;)
+println(&quot;  └──────┬──────┘&quot;)
+println(&quot;         │ generate_world_from_geography()&quot;)
+println(&quot;         ▼&quot;)
+println(&quot;  ┌─────────────┐&quot;)
+println(&quot;  │    World     │  people, households, schools,&quot;)
+println(&quot;  │              │  companies, hospitals, leisure…&quot;)
+println(&quot;  └──────┬──────┘&quot;)
+println(&quot;         │ simulator_from_file(world, interaction)&quot;)
+println(&quot;         ▼&quot;)
+println(&quot;  ┌─────────────┐   ┌──────────────┐&quot;)
+println(&quot;  │  Simulator   │──▶│  Each step:   │&quot;)
+println(&quot;  │              │   │  1. Policies  │&quot;)
+println(&quot;  │  timer       │   │  2. Activities│&quot;)
+println(&quot;  │  interaction │   │  3. Transmit  │&quot;)
+println(&quot;  │  epidemiology│   │  4. Progress  │&quot;)
+println(&quot;  │  policies    │   │  5. Record    │&quot;)
+println(&quot;  │  record      │   └──────────────┘&quot;)
+println(&quot;  └─────────────┘&quot;)
+println()
+println(&quot;Key functions:&quot;)
+println(&quot;  simulator_from_file()  — wire up all subsystems&quot;)
+println(&quot;  run!(sim)              — execute full simulation&quot;)
+println(&quot;  do_timestep!(sim)      — single step for debugging&quot;)</code></pre><pre><code class="nohighlight hljs">Full JUNE Simulation Architecture
+══════════════════════════════════════════════════
+
+  ┌─────────────┐   YAML configs
+  │  Geography   │ ← area coordinates, population data
+  │  Demography  │ ← age/sex distributions, comorbidities
+  └──────┬──────┘
+         │ generate_world_from_geography()
+         ▼
+  ┌─────────────┐
+  │    World     │  people, households, schools,
+  │              │  companies, hospitals, leisure…
+  └──────┬──────┘
+         │ simulator_from_file(world, interaction)
+         ▼
+  ┌─────────────┐   ┌──────────────┐
+  │  Simulator   │──▶│  Each step:   │
+  │              │   │  1. Policies  │
+  │  timer       │   │  2. Activities│
+  │  interaction │   │  3. Transmit  │
+  │  epidemiology│   │  4. Progress  │
+  │  policies    │   │  5. Record    │
+  │  record      │   └──────────────┘
+  └─────────────┘
+
+Key functions:
+  simulator_from_file()  — wire up all subsystems
+  run!(sim)              — execute full simulation
+  do_timestep!(sim)      — single step for debugging</code></pre><h2 id="Weekday-vs-Weekend-Step-Counts"><a class="docs-heading-anchor" href="#Weekday-vs-Weekend-Step-Counts">Weekday vs Weekend Step Counts</a><a id="Weekday-vs-Weekend-Step-Counts-1"></a><a class="docs-heading-anchor-permalink" href="#Weekday-vs-Weekend-Step-Counts" title="Permalink"></a></h2><pre><code class="language-julia hljs">timer3 = JTimer(
+    DateTime(&quot;2020-03-02&quot;), 7,
+    DateTime(&quot;2020-03-02&quot;), DateTime(&quot;2020-03-02&quot;),
+    DateTime(&quot;2020-03-09&quot;),
+    0, 0.0,
+    [8.0, 8.0, 8.0], [12.0, 12.0],
+    [String[] for _ in 1:3], [String[] for _ in 1:2],
+    Millisecond(0), 0.0,
+)
+
+weekday_steps = 0
+weekend_steps = 0
+for t in timer3
+    if is_weekend(t)
+        weekend_steps += 1
+    else
+        weekday_steps += 1
+    end
+end
+println(&quot;Over 7 days (Mon 2 Mar – Sun 8 Mar 2020):&quot;)
+println(&quot;  Weekday steps: $weekday_steps  (5 days × 3 steps)&quot;)
+println(&quot;  Weekend steps: $weekend_steps  (2 days × 2 steps)&quot;)
+println(&quot;  Total steps:   $(weekday_steps + weekend_steps)&quot;)</code></pre><pre><code class="nohighlight hljs">Over 7 days (Mon 2 Mar – Sun 8 Mar 2020):
+  Weekday steps: 15  (5 days × 3 steps)
+  Weekend steps: 4  (2 days × 2 steps)
+  Total steps:   19</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../06_vaccines/python/">« Python</a><a class="docs-footer-nextpage" href="../python/">Python »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Tuesday 7 April 2026 02:50">Tuesday 7 April 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Python · June.jl</title><meta name="title" content="Python · June.jl"/><meta property="og:title" content="Python · June.jl"/><meta property="twitter:title" content="Python · June.jl"/><meta name="description" content="Documentation for June.jl."/><meta property="og:description" content="Documentation for June.jl."/><meta property="twitter:description" content="Documentation for June.jl."/><script data-outdated-warner src="../../../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../../../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../../../assets/documenter.js"></script><script src="../../../../search_index.js"></script><script src="../../../../siteinfo.js"></script><script src="../../../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../../../">June.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../../../">Home</a></li><li><span class="tocitem">Vignettes</span><ul><li><a class="tocitem" href="../../">Overview</a></li><li><input class="collapse-toggle" id="menuitem-2-2" type="checkbox"/><label class="tocitem" for="menuitem-2-2"><span class="docs-label">01 Quickstart</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../01_quickstart/julia/">Julia</a></li><li><a class="tocitem" href="../../01_quickstart/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-3" type="checkbox"/><label class="tocitem" for="menuitem-2-3"><span class="docs-label">02 Geography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../02_geography/julia/">Julia</a></li><li><a class="tocitem" href="../../02_geography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-4" type="checkbox"/><label class="tocitem" for="menuitem-2-4"><span class="docs-label">03 Demography</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../03_demography/julia/">Julia</a></li><li><a class="tocitem" href="../../03_demography/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-5" type="checkbox"/><label class="tocitem" for="menuitem-2-5"><span class="docs-label">04 Epidemiology</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../04_epidemiology/julia/">Julia</a></li><li><a class="tocitem" href="../../04_epidemiology/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-6" type="checkbox"/><label class="tocitem" for="menuitem-2-6"><span class="docs-label">05 Policies</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../05_policies/julia/">Julia</a></li><li><a class="tocitem" href="../../05_policies/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-7" type="checkbox"/><label class="tocitem" for="menuitem-2-7"><span class="docs-label">06 Vaccines</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../../06_vaccines/julia/">Julia</a></li><li><a class="tocitem" href="../../06_vaccines/python/">Python</a></li></ul></li><li><input class="collapse-toggle" id="menuitem-2-8" type="checkbox" checked/><label class="tocitem" for="menuitem-2-8"><span class="docs-label">07 Advanced</span><i class="docs-chevron"></i></label><ul class="collapsed"><li><a class="tocitem" href="../julia/">Julia</a></li><li class="is-active"><a class="tocitem" href>Python</a><ul class="internal"><li class="toplevel"><a class="tocitem" href="#Advanced:-Simulation-Walkthrough"><span>Advanced: Simulation Walkthrough</span></a></li><li><a class="tocitem" href="#Setup"><span>Setup</span></a></li><li><a class="tocitem" href="#The-Timer"><span>The Timer</span></a></li><li><a class="tocitem" href="#Building-a-Mini-World"><span>Building a Mini World</span></a></li><li><a class="tocitem" href="#The-Interaction-Model"><span>The Interaction Model</span></a></li><li><a class="tocitem" href="#Mini-Simulation-Loop"><span>Mini Simulation Loop</span></a></li><li><a class="tocitem" href="#Full-Simulation-Architecture"><span>Full Simulation Architecture</span></a></li><li><a class="tocitem" href="#Weekday-vs-Weekend-Step-Counts"><span>Weekday vs Weekend Step Counts</span></a></li></ul></li></ul></li></ul></li><li><a class="tocitem" href="../../../../api/">API Reference</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Vignettes</a></li><li><a class="is-disabled">07 Advanced</a></li><li class="is-active"><a href>Python</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Python</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/epirecipes/June.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Advanced:-Simulation-Walkthrough-in-JUNE-(Python)"><a class="docs-heading-anchor" href="#Advanced:-Simulation-Walkthrough-in-JUNE-(Python)">Advanced: Simulation Walkthrough in JUNE (Python)</a><a id="Advanced:-Simulation-Walkthrough-in-JUNE-(Python)-1"></a><a class="docs-heading-anchor-permalink" href="#Advanced:-Simulation-Walkthrough-in-JUNE-(Python)" title="Permalink"></a></h1><ul><li><a href="#advanced-simulation-walkthrough">Advanced: Simulation Walkthrough</a><ul><li><a href="#setup">Setup</a></li><li><a href="#the-timer">The Timer</a><ul><li><a href="#creating-a-timer">Creating a Timer</a></li><li><a href="#day-type-detection">Day Type Detection</a></li><li><a href="#step-duration">Step Duration</a></li><li><a href="#advancing-through-time">Advancing Through Time</a></li></ul></li><li><a href="#building-a-mini-world">Building a Mini World</a></li><li><a href="#the-interaction-model">The Interaction Model</a></li><li><a href="#mini-simulation-loop">Mini Simulation Loop</a></li><li><a href="#full-simulation-architecture">Full Simulation Architecture</a></li><li><a href="#weekday-vs-weekend-step-counts">Weekday vs Weekend Step Counts</a></li></ul></li></ul><h1 id="Advanced:-Simulation-Walkthrough"><a class="docs-heading-anchor" href="#Advanced:-Simulation-Walkthrough">Advanced: Simulation Walkthrough</a><a id="Advanced:-Simulation-Walkthrough-1"></a><a class="docs-heading-anchor-permalink" href="#Advanced:-Simulation-Walkthrough" title="Permalink"></a></h1><p>This vignette ties together all the building blocks — Timer, World, Interaction, Epidemiology, and Records — into a complete end-to-end simulation overview.</p><h2 id="Setup"><a class="docs-heading-anchor" href="#Setup">Setup</a><a id="Setup-1"></a><a class="docs-heading-anchor-permalink" href="#Setup" title="Permalink"></a></h2><pre><code class="language-python hljs">import sys, types
+fake_turtle = types.ModuleType(&#39;turtle&#39;)
+fake_turtle.home = lambda: None
+sys.modules[&#39;turtle&#39;] = fake_turtle</code></pre><h2 id="The-Timer"><a class="docs-heading-anchor" href="#The-Timer">The Timer</a><a id="The-Timer-1"></a><a class="docs-heading-anchor-permalink" href="#The-Timer" title="Permalink"></a></h2><p>The <code>Timer</code> drives the simulation clock in JUNE.</p><h3 id="Creating-a-Timer"><a class="docs-heading-anchor" href="#Creating-a-Timer">Creating a Timer</a><a id="Creating-a-Timer-1"></a><a class="docs-heading-anchor-permalink" href="#Creating-a-Timer" title="Permalink"></a></h3><pre><code class="language-python hljs">from june.time import Timer
+
+timer = Timer(
+    initial_day=&quot;2020-03-02&quot;,
+    total_days=7,
+    weekday_step_duration=[8, 8, 8],
+    weekend_step_duration=[12, 12],
+)
+print(f&quot;Timer created:&quot;)
+print(f&quot;  Initial date: {timer.date}&quot;)
+print(f&quot;  Total days:   7&quot;)</code></pre><pre><code class="nohighlight hljs">No --data argument given - defaulting to:
+/Users/sdwfrost/Projects/june/code/June.jl/vignettes/07_advanced/python/data
+No --configs argument given - defaulting to:
+/Users/sdwfrost/Projects/june/code/JUNE/june/configs
+
+Timer created:
+  Initial date: 2020-03-02 00:00:00
+  Total days:   7</code></pre><h3 id="Day-Type-Detection"><a class="docs-heading-anchor" href="#Day-Type-Detection">Day Type Detection</a><a id="Day-Type-Detection-1"></a><a class="docs-heading-anchor-permalink" href="#Day-Type-Detection" title="Permalink"></a></h3><pre><code class="language-python hljs">print(f&quot;Date: {timer.date} ({timer.date.strftime(&#39;%A&#39;)})&quot;)
+print(f&quot;  Is weekend: {timer.date.weekday() &gt;= 5}&quot;)
+day_type = &quot;weekend&quot; if timer.date.weekday() &gt;= 5 else &quot;weekday&quot;
+print(f&quot;  Day type: {day_type}&quot;)</code></pre><pre><code class="nohighlight hljs">Date: 2020-03-02 00:00:00 (Monday)
+  Is weekend: False
+  Day type: weekday</code></pre><h3 id="Step-Duration"><a class="docs-heading-anchor" href="#Step-Duration">Step Duration</a><a id="Step-Duration-1"></a><a class="docs-heading-anchor-permalink" href="#Step-Duration" title="Permalink"></a></h3><p>Weekdays have 3 steps of 8 hours; weekends have 2 steps of 12 hours.</p><pre><code class="language-python hljs">print(f&quot;Weekday steps: {timer.weekday_step_duration} hours  ({sum(timer.weekday_step_duration)}h total)&quot;)
+print(f&quot;Weekend steps: {timer.weekend_step_duration} hours  ({sum(timer.weekend_step_duration)}h total)&quot;)</code></pre><pre><code class="nohighlight hljs">Weekday steps: [8, 8, 8] hours  (24h total)
+Weekend steps: [12, 12] hours  (24h total)</code></pre><h3 id="Advancing-Through-Time"><a class="docs-heading-anchor" href="#Advancing-Through-Time">Advancing Through Time</a><a id="Advancing-Through-Time-1"></a><a class="docs-heading-anchor-permalink" href="#Advancing-Through-Time" title="Permalink"></a></h3><p>Each call to <code>next(timer)</code> advances the timer by one step.</p><pre><code class="language-python hljs">timer2 = Timer(
+    initial_day=&quot;2020-03-02&quot;,
+    total_days=7,
+    weekday_step_duration=[8, 8, 8],
+    weekend_step_duration=[12, 12],
+)
+
+print(f&quot;{&#39;Step&#39;:&gt;4} | {&#39;Date&#39;:&lt;20} | {&#39;Day&#39;:&lt;10} | {&#39;Shift&#39;:&gt;5} | {&#39;Duration (h)&#39;:&gt;12}&quot;)
+print(&quot;─&quot; * 5 + &quot;|&quot; + &quot;─&quot; * 22 + &quot;|&quot; + &quot;─&quot; * 12 + &quot;|&quot; + &quot;─&quot; * 7 + &quot;|&quot; + &quot;─&quot; * 13)
+for step_num in range(25):
+    try:
+        next(timer2)
+    except StopIteration:
+        break
+    d = timer2.date.strftime(&quot;%Y-%m-%d %H:%M&quot;)
+    dn = timer2.date.strftime(&quot;%A&quot;)
+    dur_h = timer2.duration
+    print(f&quot;{step_num+1:4d} | {d:&lt;20} | {dn:&lt;10} | {timer2.shift:5d} | {dur_h:12.1f}&quot;)</code></pre><pre><code class="nohighlight hljs">Step | Date                 | Day        | Shift | Duration (h)
+─────|──────────────────────|────────────|───────|─────────────
+   1 | 2020-03-02 08:00     | Monday     |     1 |          0.3
+   2 | 2020-03-02 16:00     | Monday     |     2 |          0.3
+   3 | 2020-03-03 00:00     | Tuesday    |     0 |          0.3
+   4 | 2020-03-03 08:00     | Tuesday    |     1 |          0.3
+   5 | 2020-03-03 16:00     | Tuesday    |     2 |          0.3
+   6 | 2020-03-04 00:00     | Wednesday  |     0 |          0.3
+   7 | 2020-03-04 08:00     | Wednesday  |     1 |          0.3
+   8 | 2020-03-04 16:00     | Wednesday  |     2 |          0.3
+   9 | 2020-03-05 00:00     | Thursday   |     0 |          0.3
+  10 | 2020-03-05 08:00     | Thursday   |     1 |          0.3
+  11 | 2020-03-05 16:00     | Thursday   |     2 |          0.3
+  12 | 2020-03-06 00:00     | Friday     |     0 |          0.3
+  13 | 2020-03-06 08:00     | Friday     |     1 |          0.3
+  14 | 2020-03-06 16:00     | Friday     |     2 |          0.3
+  15 | 2020-03-07 00:00     | Saturday   |     0 |          0.5
+  16 | 2020-03-07 12:00     | Saturday   |     1 |          0.5
+  17 | 2020-03-08 00:00     | Sunday     |     0 |          0.5
+  18 | 2020-03-08 12:00     | Sunday     |     1 |          0.5
+  19 | 2020-03-09 00:00     | Monday     |     0 |          0.3
+  20 | 2020-03-09 08:00     | Monday     |     1 |          0.3
+  21 | 2020-03-09 16:00     | Monday     |     2 |          0.3
+  22 | 2020-03-10 00:00     | Tuesday    |     0 |          0.3
+  23 | 2020-03-10 08:00     | Tuesday    |     1 |          0.3
+  24 | 2020-03-10 16:00     | Tuesday    |     2 |          0.3
+  25 | 2020-03-11 00:00     | Wednesday  |     0 |          0.3</code></pre><h2 id="Building-a-Mini-World"><a class="docs-heading-anchor" href="#Building-a-Mini-World">Building a Mini World</a><a id="Building-a-Mini-World-1"></a><a class="docs-heading-anchor-permalink" href="#Building-a-Mini-World" title="Permalink"></a></h2><p>A <code>World</code> holds the entire simulation state. Here we build a small world by hand for demonstration.</p><pre><code class="language-python hljs">from june.demography import Person
+from june.groups import Household
+from june.groups.school import School
+from june.groups.company import Company
+
+# Population
+people_list = []
+ages = [5, 8, 32, 35, 42, 55, 68, 75]
+for i, age in enumerate(ages):
+    p = Person.from_attributes(sex=&#39;m&#39; if i % 2 == 0 else &#39;f&#39;, age=age)
+    people_list.append(p)
+
+# Households
+h1 = Household()
+h1.add(people_list[0])  # child (5)
+h1.add(people_list[2])  # parent (32)
+h1.add(people_list[3])  # parent (35)
+
+h2 = Household()
+h2.add(people_list[4])  # adult (42)
+h2.add(people_list[5])  # adult (55)
+
+h3 = Household()
+h3.add(people_list[6])  # elderly (68)
+h3.add(people_list[7])  # elderly (75)
+
+# School
+school = School(coordinates=[51.5, -0.12], n_pupils_max=200,
+                age_min=5, age_max=11, sector=&quot;primary&quot;)
+school.add(people_list[0])
+school.add(people_list[1])
+
+# Company
+company = Company(sector=&quot;Q&quot;, n_workers_max=20)
+company.add(people_list[4])
+company.add(people_list[5])
+
+print(&quot;Mini-world summary:&quot;)
+print(f&quot;  People: {len(people_list)}&quot;)
+print(f&quot;  Households: 3 ({len(h1.people)}+{len(h2.people)}+{len(h3.people)} residents)&quot;)
+print(f&quot;  School: {school.n_pupils} pupils&quot;)
+print(f&quot;  Company: {company.n_workers} workers&quot;)</code></pre><pre><code class="nohighlight hljs">Mini-world summary:
+  People: 8
+  Households: 3 (3+2+2 residents)
+  School: 2 pupils
+  Company: 2 workers</code></pre><h2 id="The-Interaction-Model"><a class="docs-heading-anchor" href="#The-Interaction-Model">The Interaction Model</a><a id="The-Interaction-Model-1"></a><a class="docs-heading-anchor-permalink" href="#The-Interaction-Model" title="Permalink"></a></h2><p>The <code>Interaction</code> class controls how disease spreads within groups.</p><pre><code class="language-python hljs">betas = {
+    &quot;household&quot;: 0.208,
+    &quot;school&quot;: 0.070,
+    &quot;company&quot;: 0.371,
+}
+
+print(&quot;Interaction model:&quot;)
+print(f&quot;  alpha_physical = 2.0&quot;)
+for g, b in sorted(betas.items(), key=lambda x: -x[1]):
+    bar = &quot;█&quot; * int(b * 40)
+    print(f&quot;  {g:&lt;12} β = {b}  {bar}&quot;)</code></pre><pre><code class="nohighlight hljs">Interaction model:
+  alpha_physical = 2.0
+  company      β = 0.371  ██████████████
+  household    β = 0.208  ████████
+  school       β = 0.07  ██</code></pre><h2 id="Mini-Simulation-Loop"><a class="docs-heading-anchor" href="#Mini-Simulation-Loop">Mini Simulation Loop</a><a id="Mini-Simulation-Loop-1"></a><a class="docs-heading-anchor-permalink" href="#Mini-Simulation-Loop" title="Permalink"></a></h2><p>In a full simulation, the <code>Simulator</code> class wires together <code>World</code>, <code>Interaction</code>, <code>Timer</code>, <code>ActivityManager</code>, and <code>Epidemiology</code>, typically configured from YAML files. Here we sketch the core simulation loop to illustrate the mechanics.</p><pre><code class="language-python hljs">import random
+import numpy as np
+
+print(&quot;=== Mini SIR Simulation ===&quot;)
+print()
+
+# Parameters
+n_people = 200
+n_days = 30
+beta = 0.3
+gamma = 0.1
+n_initial = 5
+
+rng = random.Random(42)
+
+# Population with households
+all_people = []
+for i in range(n_people):
+    p = Person.from_attributes(sex=rng.choice([&#39;m&#39;, &#39;f&#39;]), age=rng.randint(5, 80))
+    all_people.append(p)
+
+# Build an index mapping person -&gt; position
+pid_to_idx = {p.id: i for i, p in enumerate(all_people)}
+
+# Create households (groups of 2-5)
+households = []
+idx = 0
+while idx &lt; n_people:
+    hh = Household()
+    hh_size = min(rng.randint(2, 5), n_people - idx)
+    for j in range(hh_size):
+        hh.add(all_people[idx + j])
+    households.append(hh)
+    idx += hh_size
+
+# State tracking: 0=S, 1=I, 2=R
+state = [0] * n_people
+infected_day = [0] * n_people
+
+# Seed infections
+seeds = rng.sample(range(n_people), n_initial)
+for s in seeds:
+    state[s] = 1
+    infected_day[s] = 0
+
+# Run simulation
+S_counts = [state.count(0)]
+I_counts = [state.count(1)]
+R_counts = [state.count(2)]
+
+for day in range(1, n_days + 1):
+    # Transmission within households
+    for hh in households:
+        members = list(hh.people)
+        member_idxs = [pid_to_idx[p.id] for p in members]
+        n_inf = sum(1 for i in member_idxs if state[i] == 1)
+        if n_inf == 0:
+            continue
+        for i in member_idxs:
+            if state[i] != 0:
+                continue
+            prob = 1.0 - (1.0 - beta / len(members)) ** n_inf
+            if rng.random() &lt; prob:
+                state[i] = 1
+                infected_day[i] = day
+
+    # Recovery
+    for i in range(n_people):
+        if state[i] == 1 and (day - infected_day[i]) &gt;= 3:
+            if rng.random() &lt; gamma:
+                state[i] = 2
+
+    S_counts.append(state.count(0))
+    I_counts.append(state.count(1))
+    R_counts.append(state.count(2))
+
+# Display trajectory
+print(f&quot;{&#39;Day&#39;:&gt;3} | {&#39;Susceptible&#39;:&gt;11} | {&#39;Infected&#39;:&gt;8} | {&#39;Recovered&#39;:&gt;9}&quot;)
+print(&quot;────|─────────────|──────────|──────────&quot;)
+for d in [0, 5, 10, 15, 20, 25, 30]:
+    bar_s = &quot;░&quot; * max(0, S_counts[d] // 5)
+    bar_i = &quot;█&quot; * max(0, I_counts[d] // 5)
+    bar_r = &quot;▓&quot; * max(0, R_counts[d] // 5)
+    print(f&quot;{d:3d} | {S_counts[d]:11d} | {I_counts[d]:8d} | {R_counts[d]:8d}  {bar_s}{bar_i}{bar_r}&quot;)
+
+print()
+print(f&quot;Final: S={S_counts[-1]} I={I_counts[-1]} R={R_counts[-1]}&quot;)
+print(f&quot;Attack rate: {round(100 * R_counts[-1] / n_people, 1)}%&quot;)</code></pre><pre><code class="nohighlight hljs">=== Mini SIR Simulation ===
+
+Day | Susceptible | Infected | Recovered
+────|─────────────|──────────|──────────
+  0 |         195 |        5 |        0  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+  5 |         194 |        4 |        2  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ 10 |         190 |        7 |        3  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+ 15 |         189 |        7 |        4  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+ 20 |         189 |        3 |        8  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓
+ 25 |         189 |        2 |        9  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓
+ 30 |         189 |        0 |       11  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓
+
+Final: S=189 I=0 R=11
+Attack rate: 5.5%</code></pre><h2 id="Full-Simulation-Architecture"><a class="docs-heading-anchor" href="#Full-Simulation-Architecture">Full Simulation Architecture</a><a id="Full-Simulation-Architecture-1"></a><a class="docs-heading-anchor-permalink" href="#Full-Simulation-Architecture" title="Permalink"></a></h2><p>In practice, a full JUNE simulation uses config-driven setup:</p><pre><code class="language-python hljs">print(&quot;Full JUNE Simulation Architecture&quot;)
+print(&quot;═&quot; * 50)
+print()
+print(&quot;  ┌─────────────┐   YAML configs&quot;)
+print(&quot;  │  Geography   │ ← area coordinates, population data&quot;)
+print(&quot;  │  Demography  │ ← age/sex distributions, comorbidities&quot;)
+print(&quot;  └──────┬──────┘&quot;)
+print(&quot;         │ generate_world_from_geography()&quot;)
+print(&quot;         ▼&quot;)
+print(&quot;  ┌─────────────┐&quot;)
+print(&quot;  │    World     │  people, households, schools,&quot;)
+print(&quot;  │              │  companies, hospitals, leisure…&quot;)
+print(&quot;  └──────┬──────┘&quot;)
+print(&quot;         │ Simulator(world, interaction, ...)&quot;)
+print(&quot;         ▼&quot;)
+print(&quot;  ┌─────────────┐   ┌──────────────┐&quot;)
+print(&quot;  │  Simulator   │──▶│  Each step:   │&quot;)
+print(&quot;  │              │   │  1. Policies  │&quot;)
+print(&quot;  │  timer       │   │  2. Activities│&quot;)
+print(&quot;  │  interaction │   │  3. Transmit  │&quot;)
+print(&quot;  │  epidemiology│   │  4. Progress  │&quot;)
+print(&quot;  │  policies    │   │  5. Record    │&quot;)
+print(&quot;  │  record      │   └──────────────┘&quot;)
+print(&quot;  └─────────────┘&quot;)
+print()
+print(&quot;Key classes:&quot;)
+print(&quot;  Simulator()  — wire up all subsystems&quot;)
+print(&quot;  sim.run()    — execute full simulation&quot;)</code></pre><pre><code class="nohighlight hljs">Full JUNE Simulation Architecture
+══════════════════════════════════════════════════
+
+  ┌─────────────┐   YAML configs
+  │  Geography   │ ← area coordinates, population data
+  │  Demography  │ ← age/sex distributions, comorbidities
+  └──────┬──────┘
+         │ generate_world_from_geography()
+         ▼
+  ┌─────────────┐
+  │    World     │  people, households, schools,
+  │              │  companies, hospitals, leisure…
+  └──────┬──────┘
+         │ Simulator(world, interaction, ...)
+         ▼
+  ┌─────────────┐   ┌──────────────┐
+  │  Simulator   │──▶│  Each step:   │
+  │              │   │  1. Policies  │
+  │  timer       │   │  2. Activities│
+  │  interaction │   │  3. Transmit  │
+  │  epidemiology│   │  4. Progress  │
+  │  policies    │   │  5. Record    │
+  │  record      │   └──────────────┘
+  └─────────────┘
+
+Key classes:
+  Simulator()  — wire up all subsystems
+  sim.run()    — execute full simulation</code></pre><h2 id="Weekday-vs-Weekend-Step-Counts"><a class="docs-heading-anchor" href="#Weekday-vs-Weekend-Step-Counts">Weekday vs Weekend Step Counts</a><a id="Weekday-vs-Weekend-Step-Counts-1"></a><a class="docs-heading-anchor-permalink" href="#Weekday-vs-Weekend-Step-Counts" title="Permalink"></a></h2><pre><code class="language-python hljs">timer3 = Timer(
+    initial_day=&quot;2020-03-02&quot;,
+    total_days=7,
+    weekday_step_duration=[8, 8, 8],
+    weekend_step_duration=[12, 12],
+)
+
+weekday_steps = 0
+weekend_steps = 0
+for step_num in range(100):
+    try:
+        next(timer3)
+    except StopIteration:
+        break
+    if timer3.date.weekday() &gt;= 5:
+        weekend_steps += 1
+    else:
+        weekday_steps += 1
+
+print(f&quot;Over 7 days (Mon 2 Mar – Sun 8 Mar 2020):&quot;)
+print(f&quot;  Weekday steps: {weekday_steps}  (5 days × 3 steps)&quot;)
+print(f&quot;  Weekend steps: {weekend_steps}  (2 days × 2 steps)&quot;)
+print(f&quot;  Total steps:   {weekday_steps + weekend_steps}&quot;)</code></pre><pre><code class="nohighlight hljs">Over 7 days (Mon 2 Mar – Sun 8 Mar 2020):
+  Weekday steps: 80  (5 days × 3 steps)
+  Weekend steps: 20  (2 days × 2 steps)
+  Total steps:   100</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../julia/">« Julia</a><a class="docs-footer-nextpage" href="../../../../api/">API Reference »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.17.0 on <span class="colophon-date" title="Tuesday 7 April 2026 02:50">Tuesday 7 April 2026</span>. Using Julia version 1.12.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
