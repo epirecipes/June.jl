@@ -1,6 +1,11 @@
 .DS_Store
+docs/build/
+docs/src/generated/
+docs/site/
 results/
 *.h5
+vignettes/.quarto/
 vignettes/.venv/
 vignettes/**/.DS_Store
 vignettes/**/.quarto/
+vignettes/_output/
